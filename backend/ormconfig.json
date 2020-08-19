@@ -1,0 +1,12 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "1111",
+  "database": "tech-diary",
+  "entities": [
+      "src/entity/*.ts"
+  ],
+  "synchronize": true
+}
