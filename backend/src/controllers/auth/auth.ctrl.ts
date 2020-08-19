@@ -30,6 +30,7 @@ export class AuthCtrl {
     try {
       const { memberId, pw } = body;
 
+      // 회원 조회
       const member = await this.authService.login(memberId, pw);
 
       // 회원 조회 실패
