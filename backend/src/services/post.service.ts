@@ -23,12 +23,32 @@ export class PostService {
   }
 
   public async createPost(title: string, contents: string, thumbnail_address?: string) {
-    const posts = await this.postRepo.create({
+    const post = await this.postRepo.save({
       title,
       contents,
       thumbnail_address
     });
 
-    return posts;
+    return post;
+  }
+
+  public async updatePostByIdx(idx: number, title: string, contents: string, thumbnail_address?: string) {
+    const result =  await this.postRepo.update({
+      idx,
+    }, {
+      title,
+      contents,
+      thumbnail_address,
+    });
+
+    return result;
+  }
+
+  public async deletePostByIdx(idx: number) {
+    const result = await this.postRepo.delete({
+      idx
+    });
+
+    return result;
   }
 }

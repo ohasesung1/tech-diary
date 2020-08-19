@@ -16,6 +16,8 @@ export class PostRoute {
   private setRouter() {
     this.router.get('/', this.postCtrl.getPosts);
     this.router.post('/', this.postCtrl.writePost);
+    this.router.put('/', this.postCtrl.updatePost);
+    this.router.delete('/', this.postCtrl.deletePost);
   }
 
   public getRouter() {
