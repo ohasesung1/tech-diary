@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { Container, Service } from 'typedi';
 
 import { PostRoute } from './post';
+import { AuthRoute } from './auth';
 
 @Service() 
 class RootRouter {
@@ -14,6 +15,7 @@ class RootRouter {
 
   private setRouter() {
     this.router.use('/post', Container.get(PostRoute).getRouter());
+    this.router.use('/auth', Container.get(AuthRoute).getRouter());
   }
 
   public getRouter() {

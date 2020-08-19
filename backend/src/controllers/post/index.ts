@@ -7,7 +7,7 @@ export class PostRoute {
   private router: Router;
 
   constructor(
-    public postCtrl: PostCtrl
+    public postCtrl: PostCtrl,
   ) {
     this.router = Router();
     this.setRouter();
