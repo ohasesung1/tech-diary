@@ -15,6 +15,7 @@ export class AuthCtrl {
   public login = async (req: AuthRequest, res: Response) => {
     const { body } = req;
 
+    // 로그인 요청 값 검사
     try {
       await Validate.loginValidate(body);
     } catch (error) {
@@ -31,6 +32,7 @@ export class AuthCtrl {
 
       const member = await this.authService.login(memberId, pw);
 
+      // 회원 조회 실패
       if (!member) {
         res.status(404).json({
           status: 404,
@@ -40,6 +42,7 @@ export class AuthCtrl {
         return;
       }
 
+      // 토큰 발급
       const token = await tokenLib.createToken(memberId);
       const refreshToken = await tokenLib.createRefreshToken(memberId);
 

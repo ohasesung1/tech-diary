@@ -1,6 +1,6 @@
 import { Entity, BaseEntity, PrimaryColumn, Column } from "typeorm";
 
-
+// 사용자, 멤버 모델
 @Entity()
 export class Member extends BaseEntity {
   @PrimaryColumn({ type: 'varchar', length: 50, unique: true })

@@ -3,6 +3,7 @@ import config from '../../config';
 
 const { jwtSecret } = config;
 
+// 토큰 생성
 export const createToken = (memberId: string) => {
   const payload = {
     memberId,
@@ -17,6 +18,7 @@ export const createToken = (memberId: string) => {
   }
 };
 
+// refreshToken 생성
 export const createRefreshToken = (memberId: string) => {
   const payload = {
     memberId,
@@ -31,6 +33,7 @@ export const createRefreshToken = (memberId: string) => {
   }
 };
 
+// 토큰 검사
 export const verifyToken = (token: string) => {
   try {
     return jwt.verify(token, jwtSecret);
@@ -40,6 +43,7 @@ export const verifyToken = (token: string) => {
   }
 };
 
+// 토큰 해독
 export const decodedToken = (token: string) => {
   try {
     return jwt.decode(token);
@@ -49,8 +53,9 @@ export const decodedToken = (token: string) => {
   }
 };
 
+// 토큰의 에러 메세지에 따라 status, message return
 export const searchTokenError = (error: Error) => {
-  let status = null;
+  let status = 0;
   let message = null;
 
   switch (error.message) {
