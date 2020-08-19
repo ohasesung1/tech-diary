@@ -2,7 +2,9 @@ import express, { Express } from 'express';
 import HTTP from 'http';
 import path from 'path';
 import cors from 'cors';
+import RootRouter from './controllers';
 import connectDB from './database/connection';
+import Container from 'typedi';
 
 class Server {
   public app: Express;
@@ -14,7 +16,7 @@ class Server {
   }
 
   private setRouter() {
-    // this.app.use('/api');
+    this.app.use('/api', Container.get(RootRouter).getRouter());
   }
 
   private setMiddleWare() {

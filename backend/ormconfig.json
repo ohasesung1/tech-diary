@@ -6,7 +6,7 @@
   "password": "1111",
   "database": "tech-diary",
   "entities": [
-      "src/entity/*.ts"
+      "src/database/models/*.ts"
   ],
   "synchronize": true
 }
