@@ -2,6 +2,7 @@ import path from 'path';
 import multer from 'multer';
 import { generatedId } from './method.lib';
 
+// 이미지 업로더
 export const uploader = multer({
   storage: multer.diskStorage({
     destination: function (_, __, cb) {

@@ -90,7 +90,7 @@ export class PostCtrl {
     } catch (error) {
       res.status(400).json({
         status: 400,
-        message: '양식이 맞   지 않아요!'
+        message: '양식이 맞지 않아요!'
       });
 
       return
