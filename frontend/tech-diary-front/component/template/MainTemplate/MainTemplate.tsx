@@ -2,6 +2,9 @@
 
 import { ReactNode } from 'react';
 import { jsx } from '@emotion/core';
+import * as S from './MainTemplate.styled';
+import NavBar from 'component/base/NavBar/NavBar';
+import Header from 'component/base/Header';
 
 type Props = {
   hiddenNav?: boolean;
@@ -10,9 +13,17 @@ type Props = {
 
 function MainTemplate({ hiddenNav = false, children }: Props) {
   return (
-    <div>
-      
-    </div>
+    <S.Template>
+      <S.Container>
+        <S.AsideSemen hidden={hiddenNav}>
+          <NavBar/>
+        </S.AsideSemen>
+
+        <Header/>
+
+        <S.MainSeme>{children}</S.MainSeme>
+      </S.Container>
+    </S.Template>
   );
 }
 

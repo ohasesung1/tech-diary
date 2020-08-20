@@ -1,0 +1,31 @@
+@import './reset.css';
+@import './font.css';
+/* @import './setting.css'; */
+
+* {
+  box-sizing: border-box;
+  line-height: normal;
+  color: #282828;
+}
+
+body {
+  margin: 0;
+  background-color: #f7f7f7;
+  font-family: nanum-r; 
+  min-height: 100vh;
+}
+
+/* body * {
+  font-family: nanum-r; 
+} */
+
+#__next {
+  min-height: 100vh;
+}
+
+a:active,
+a:link,
+a:focus,
+a:visited {
+  text-decoration: none;
+}

@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/util.css';
 
 type Props = {
   Component: any,
