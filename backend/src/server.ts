@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import HTTP from 'http';
 import path from 'path';
 import cors from 'cors';
+import serveStatic from 'serve-static';
 import RootRouter from './controllers';
 import connectDB from './database/connection';
 import Container from 'typedi';
@@ -23,6 +24,7 @@ class Server {
   // middleWare set
   private setMiddleWare() {
     this.app.use(cors());
+    this.app.use('/static', serveStatic(path.join(__dirname, 'public')));
     this.app.use(express.json());
   }
   

@@ -3,6 +3,7 @@ import { Container, Service } from 'typedi';
 
 import { PostRoute } from './post';
 import { AuthRoute } from './auth';
+import { UploadRoute } from './upload';
 
 @Service() 
 class RootRouter {
@@ -16,6 +17,7 @@ class RootRouter {
   private setRouter() {
     this.router.use('/post', Container.get(PostRoute).getRouter());
     this.router.use('/auth', Container.get(AuthRoute).getRouter());
+    this.router.use('/upload', Container.get(UploadRoute).getRouter());
   }
 
   public getRouter() {
