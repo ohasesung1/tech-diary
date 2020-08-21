@@ -9,8 +9,8 @@ export class PostFile extends BaseEntity {
   @Column({ type: 'varchar', length: 100})
   name: string;
 
-  @Column({ type: 'int' })
-  postIdx: number;
+  @Column({ type: 'text' })
+  postId: string;
 
   @Column({ type: 'varchar', length: 20 })
   extend: string;

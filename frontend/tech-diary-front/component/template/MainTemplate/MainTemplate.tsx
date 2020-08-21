@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { jsx } from '@emotion/core';
 import * as S from './MainTemplate.styled';
 import NavBar from 'component/base/NavBar/NavBar';
-import Header from 'component/base/Header';
+import PageHeade from 'component/base/PageHeade';
 
 type Props = {
   hiddenNav?: boolean;
@@ -18,10 +18,9 @@ function MainTemplate({ hiddenNav = false, children }: Props) {
         <S.AsideSemen hidden={hiddenNav}>
           <NavBar/>
         </S.AsideSemen>
-
-        <Header/>
-
-        <S.MainSeme>{children}</S.MainSeme>
+        <S.MainSemeWarp>
+          <S.MainSeme>{children}</S.MainSeme>
+        </S.MainSemeWarp>
       </S.Container>
     </S.Template>
   );

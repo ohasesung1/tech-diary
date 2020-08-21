@@ -1,5 +1,5 @@
 const host = process.env.NODE_ENV === 'production' ?
-  process.env.SERVER_HOST : 'http://localhost:3000';
+  process.env.SERVER_HOST : 'http://localhost:8000/api';
 
   
 const imgHost = process.env.NODE_ENV === 'production' ?

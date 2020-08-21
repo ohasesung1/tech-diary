@@ -15,7 +15,7 @@ const Content = styled.div`
   padding-top: 2rem;
 `;
 
-const NavList = styled.div`
+const NavList = styled.ul`
   width: 20rem;
 
   & > * + * {
@@ -28,9 +28,11 @@ function NavBar() {
     <NavWrap>
       <Content>
         <NavList>
-          <NavItem href="/">Main Page</NavItem>
-          <NavItem href="/react">React</NavItem>
-          <NavItem href="/react">Express</NavItem>
+          <NavItem href="/">Project</NavItem>
+          <NavItem href="/blog">Blog</NavItem>
+          <NavItem href="/github">Github</NavItem>
+          <NavItem href="/activity">Activity</NavItem>
+          <NavItem href="/certificate">Certificate</NavItem>
         </NavList>
       </Content>
     </NavWrap>

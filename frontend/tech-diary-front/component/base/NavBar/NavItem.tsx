@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 
-const LinkWrap = styled.a<{ active: boolean }>`
+const LinkWrap = styled.li<{ active: boolean }>`
   label: link;
   font-size: 0.9rem;
   user-select: none;
@@ -13,7 +13,7 @@ const LinkWrap = styled.a<{ active: boolean }>`
   display: block;
   padding: 1rem 1rem;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1rem;
   text-align: center;
   color: #868e96;
   transition: 0.3s ease-in-out;
@@ -21,21 +21,21 @@ const LinkWrap = styled.a<{ active: boolean }>`
 
   &:hover {
     transition: 0.3s ease-in-out;
-    color: white;
-    border-right: solid 0.2rem #DDFFAA;
+    color: #DDFFAA;
+    border-left: solid 0.2rem #DDFFAA;
   }
 
   ${(props) => props.active && `
-      color: white;
-      border-right: solid 0.2rem #DDFFAA;
-    ` 
+      color: #DDFFAA;
+      border-left: solid 0.2rem #DDFFAA;
+    `
   }
 `;
 
 type Props = {
   href: string;
   children: ReactNode|string;
-}
+};
 
 function NavItem({ href, children }: Props) {
   const router = useRouter();

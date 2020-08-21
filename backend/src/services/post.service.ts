@@ -14,8 +14,11 @@ export class PostService {
   ) { }
 
   // 게시글을 요청 받은 limit값과 page 별로 조회 한다.
-  public async getPostsByLimit(limit: number, page: number) {
+  public async getPostsByLimit(limit: number, page: number, category: string) {
     const posts = await this.postRepo.find({
+      where: {
+        category,
+      },
       order: {
         create_time: "DESC"
       },
@@ -27,20 +30,22 @@ export class PostService {
   }
 
   // 게시글 작성
-  public async createPost(title: string, contents: string, thumbnail_address?: string) {
+  public async createPost(id:string, title: string, contents: string, category: string, thumbnail_address?: string) {
     const post = await this.postRepo.save({
+      id,
       title,
+      category,
       contents,
-      thumbnail_address
+      thumbnail_address,
     });
 
     return post;
   }
 
   // 게시글 수정
-  public async updatePostByIdx(idx: number, title: string, contents: string, thumbnail_address?: string) {
+  public async updatePostByIdx(id: string, title: string, contents: string, thumbnail_address?: string) {
     const result =  await this.postRepo.update({
-      idx,
+      id,
     }, {
       title,
       contents,
@@ -51,9 +56,9 @@ export class PostService {
   }
 
   // 게시글 삭제
-  public async deletePostByIdx(idx: number) {
+  public async deletePostByIdx(id: string) {
     const result = await this.postRepo.delete({
-      idx
+      id
     });
 
     return result;

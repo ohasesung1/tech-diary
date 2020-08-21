@@ -10,7 +10,6 @@ export const Template = styled.div`
 export const Container = styled.div`
   label: container;
   width: 100%;
-  height: 300rem;
   display: flex;
   flex-direction: row;
 `;
@@ -32,9 +31,14 @@ export const AsideSemen = styled.aside<{hidden: boolean}>`
 
 export const MainSeme = styled.main`
   label: main_semen;
+  min-height: 100rem;
+  border: 1px solid black;
+`;
+
+export const MainSemeWarp = styled.main`
+  label: main_semen_wrap;
+  border: 1px solid black;
+  padding: 2rem;
   flex: 1;
   background-color: #e9ecef;
-  /* padding-top: 2rem;
-  padding-left: ${mainLayoutTerm};
-  padding-right: 2rem; */
 `;
