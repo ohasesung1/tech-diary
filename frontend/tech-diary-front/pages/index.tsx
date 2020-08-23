@@ -1,9 +1,8 @@
 import React from 'react';
 import Head from 'next/head'
-import styles from '../styles/Home.module.css';
 import { env } from 'libs/config/env';
 import { MainTemplate } from 'component/template/MainTemplate';
-import PostLayout from 'container/project/PostLayout';
+import ProjectLayout from 'container/project/ProjectLayout';
 import { NextPageContext } from 'next';
 import axios from 'axios';
 import { Post } from 'store/post.type';
@@ -20,7 +19,7 @@ function IndexPage({ posts }: Props) {
       <title>{env.appName}</title>
     </Head>
     <MainTemplate>
-      <PostLayout posts={posts}/>
+      <ProjectLayout posts={posts}/>
     </MainTemplate>
    </>
   );

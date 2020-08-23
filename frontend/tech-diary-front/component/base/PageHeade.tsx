@@ -5,9 +5,7 @@ import { ReactNode } from "react";
 const PageHeadeWarp = styled.header`
   label: header;
   width: 100%;
-  position: sticky;
   z-index: 100;
-  top: 0;
   margin-bottom: 2rem;
   background-color: white;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);

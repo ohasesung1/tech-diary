@@ -4,6 +4,7 @@ import { css } from "@emotion/core";
 import { Post } from 'store/post.type';
 import Link from 'next/link';
 import moment from 'moment';
+import { mediaQuery } from 'component/layout/responsive';
 
 const Container = styled.div`
   label: post-item;
@@ -12,10 +13,9 @@ const Container = styled.div`
   align-items: center;
   width: 20rem;
   height: 30rem;
-  /* margin-top: 1rem; */
   background-color: white;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  border-radius: 5px;
 `;
 
 const HeadWrap = styled.div`
@@ -23,26 +23,21 @@ const HeadWrap = styled.div`
   width: 100%;
   height: 5rem;
   padding: 1rem;
-  /* border: 1px solid black; */
-`;
-
-const ThumnailWrap = styled.div`
-  label: thumnail_wrap;
-  display: flex;
-  justify-content: center;
-  height: 10rem;
 `;
 
 const Thumnail = styled.img`
   label: thumnail;
+  display: flex;
+  justify-content: center;
+  height: 10rem;
   max-width: 100%;
   height: 10rem;
-  border-radius: 3px;
+  border-radius: 5px;
 `;
 
 const ContentWrap = styled.div`
-  display: block;
   label: content_wrap;
+  display: block;
   width: 90%;
   height: 12rem;
   padding: 1rem;
@@ -101,9 +96,7 @@ function PostItem({ data }: Props) {
 
   return (
     <Container>
-      <ThumnailWrap>
-        <Thumnail src={thumbnail_address}></Thumnail>
-      </ThumnailWrap>
+      <Thumnail src={thumbnail_address}/>
 
       <HeadWrap>
         <Link href={`/post/${id}`}>

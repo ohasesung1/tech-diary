@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import { mediaQuery } from 'component/layout/responsive';
 
 const LinkWrap = styled.li<{ active: boolean }>`
   label: link;
@@ -29,6 +30,25 @@ const LinkWrap = styled.li<{ active: boolean }>`
       color: #DDFFAA;
       border-left: solid 0.2rem #DDFFAA;
     `
+  }
+
+  
+  ${mediaQuery.sm} {
+    font-size: 0.8rem;
+    border-left: none;
+
+    &:hover {
+      transition: 0.3s ease-in-out;
+      color: #DDFFAA;
+      border-left: none;
+      border-bottom: solid 0.2rem #DDFFAA;
+    }
+
+    ${(props) => props.active && `
+      color: #DDFFAA;
+      border-bottom: solid 0.2rem #DDFFAA;
+    `
+    }
   }
 `;
 

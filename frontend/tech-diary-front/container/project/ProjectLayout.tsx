@@ -7,7 +7,7 @@ type Props = {
   posts?: Post[];
 }
 
-function PostLayout({ posts }: Props) {
+function ProjectLayout({ posts }: Props) {
 
   return (
     <>
@@ -17,4 +17,4 @@ function PostLayout({ posts }: Props) {
   );
 }
 
-export default PostLayout;
+export default ProjectLayout;
