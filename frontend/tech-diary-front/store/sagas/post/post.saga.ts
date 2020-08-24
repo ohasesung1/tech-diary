@@ -28,11 +28,11 @@ function* getPost(action: ReturnType<typeof fetchPostGet.request>) {
     return;
   }
 
-  yield put(fetchPostGet.success());
+  yield put(fetchPostGet.success(data));
   yield executeCallback(successCB);
 };
 
-export default function* postSaga() {
+export function* getPostSaga() {
   yield all([
     takeLatest(fetchPostGet.request, getPost),
   ]);

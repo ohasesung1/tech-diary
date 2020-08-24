@@ -1,13 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from 'store/modules';
-import { fetchPostGet, setPostGetErrorMsg } from 'store/modules/post';
-import { useRouter } from 'next/router';
-import { useCallback } from 'react';
-import postSaga from 'store/sagas/post/post.saga';
+import { getPostSaga } from 'store/sagas/post/post.saga';
+import { POST_GET_REQUEST } from 'store/modules/post';
 
 export const usePost = (page: number, limit: number, category: string) => {
   const dispatch = useDispatch();
-  const test = postSaga();
-  console.log(test);
+  dispatch(getPostSaga());
   
 };
