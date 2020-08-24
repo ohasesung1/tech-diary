@@ -7,3 +7,12 @@ export type Post = {
   series?: string;
   createTime: string;
 };
+
+export type PostGet = {
+  page: number;
+  limit: number;
+  category: string;
+
+  successCB?: () => void;
+  failureCB?: () => void;
+};

@@ -1,15 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import styled from '@emotion/styled';
-import { layoutTerm } from 'component/layout/page';
 import NavItem from './NavItem';
 import { mediaQuery } from 'component/layout/responsive';
-// import profileImage from 'public/files/profileImage.png';
 
 const NavWrap = styled.nav`
   label: nav;
   position: absolute;
-  /* top: ${layoutTerm}; */
 `;
 
 const Content = styled.div`
@@ -24,10 +21,15 @@ const ProfileWrap = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  padding: 4rem 0;
+
+  ${mediaQuery.sm} {
+    padding: 1rem;
+  }
 `;
 
 const ProfileImageWrap = styled.div`
+  label: profile_image_wrap;
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -35,32 +37,39 @@ const ProfileImageWrap = styled.div`
 `;
 
 const ProfileImage = styled.img`
+  label: profile_image;
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
-  /* border: 1px solid white; */
 `;
 
 const Intro = styled.pre`
+  label: intro;
   text-align: center;
   padding: 0 1rem;
   color: white;
   font-size: 1rem;
   line-height: 2rem;
-  /* border: 1px solid black; */
+`;
+
+const ResumeWrap = styled.div`
+  label: resume_wrap;
+  display: flex;
+  height: 3rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NavList = styled.ul`
+  label: nav_list;
   width: 100%;
   padding-top: 3rem;
-  border: 1px solid black;
 
   ${mediaQuery.sm} {
     display: flex;
     flex-direction: row;
-    position: sticky;
-    z-index: 200;
-    top: 0;
+    height: 4rem;
     padding-top: 0;
   }
 
@@ -80,11 +89,14 @@ function NavBar() {
           <Intro>
             {`안녕하세요, 탐험하고 모험하는 개발자 \n 오해성입니다!`}
           </Intro>
+          <ResumeWrap>
+            <a href="https://www.notion.so/O-HAESEONG-7d34eb6436d0486fbcaffd8b5c0d8df5" style={{ color: "#DDFFAA" }}>https://portfolio.link.com</a>
+          </ResumeWrap>
         </ProfileWrap>
         <NavList>
           <NavItem href="/">Project</NavItem>
           <NavItem href="/blog">Blog</NavItem>
-          <NavItem href="/github">Github</NavItem>
+          <NavItem href="https://github.com/ohasesung1">Github</NavItem>
           <NavItem href="/activity">Activity</NavItem>
           <NavItem href="/certificate">Certificate</NavItem>
         </NavList>

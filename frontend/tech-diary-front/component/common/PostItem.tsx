@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from "@emotion/core";
-import { Post } from 'store/post.type';
+import { Post } from 'store/types/post.type';
 import Link from 'next/link';
 import moment from 'moment';
-import { mediaQuery } from 'component/layout/responsive';
 
 const Container = styled.div`
   label: post-item;
@@ -13,6 +12,8 @@ const Container = styled.div`
   align-items: center;
   width: 20rem;
   height: 30rem;
+  align-self: center;
+  justify-self: center;
   background-color: white;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
   border-radius: 5px;

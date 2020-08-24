@@ -1,6 +1,5 @@
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
-// import { layoutTerm, mainLayoutTerm } from "component/layout/page";
 import { mediaQuery, breakPoints } from "component/layout/responsive";
 
 export const Template = styled.div`
@@ -18,7 +17,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* border: 1px solid black; */
   }
 `;
 
@@ -53,12 +51,10 @@ export const AsideSemen = styled.aside<{hidden: boolean}>`
 export const MainSeme = styled.main`
   label: main_semen;
   min-height: 100rem;
-  /* border: 1px solid black; */
 `;
 
 export const MainSemeWarp = styled.main`
   label: main_semen_wrap;
-  /* border: 1px solid black; */
   padding: 2rem;
   flex: 1;
   background-color: #e9ecef;

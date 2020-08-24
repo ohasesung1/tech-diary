@@ -1,6 +1,6 @@
 import React from 'react';
 import PageHeade from 'component/base/PageHeade';
-import { Post } from 'store/post.type';
+import { Post } from 'store/types/post.type';
 import PostList from 'component/common/PostList';
 
 type Props = {

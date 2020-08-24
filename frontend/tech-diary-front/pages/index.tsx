@@ -5,7 +5,7 @@ import { MainTemplate } from 'component/template/MainTemplate';
 import ProjectLayout from 'container/project/ProjectLayout';
 import { NextPageContext } from 'next';
 import axios from 'axios';
-import { Post } from 'store/post.type';
+import { Post } from 'store/types/post.type';
 
 
 type Props = {
