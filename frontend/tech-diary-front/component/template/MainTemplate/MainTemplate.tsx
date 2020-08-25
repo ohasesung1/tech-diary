@@ -4,7 +4,6 @@ import { ReactNode } from 'react';
 import { jsx } from '@emotion/core';
 import * as S from './MainTemplate.styled';
 import NavBar from 'component/base/NavBar/NavBar';
-import PageHeade from 'component/base/PageHeade';
 
 type Props = {
   hiddenNav?: boolean;

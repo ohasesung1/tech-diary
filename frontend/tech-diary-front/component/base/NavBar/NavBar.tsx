@@ -90,7 +90,7 @@ function NavBar() {
             {`안녕하세요, 탐험하고 모험하는 개발자 \n 오해성입니다!`}
           </Intro>
           <ResumeWrap>
-            <a href="https://www.notion.so/O-HAESEONG-7d34eb6436d0486fbcaffd8b5c0d8df5" style={{ color: "#DDFFAA" }}>https://portfolio.link.com</a>
+            <a href="https://www.notion.so/O-HAESEONG-7d34eb6436d0486fbcaffd8b5c0d8df5" style={{ color: "#DDFFAA" }}>https://notion.link.com</a>
           </ResumeWrap>
         </ProfileWrap>
         <NavList>

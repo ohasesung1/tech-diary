@@ -1,4 +1,5 @@
 import '../styles/util.css';
+import { wrapper } from 'store';
 
 type Props = {
   Component: any,
@@ -9,4 +10,4 @@ function MyApp({ Component, pageProps }: Props) {
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp);

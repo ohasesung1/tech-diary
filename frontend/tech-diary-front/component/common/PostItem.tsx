@@ -17,6 +17,8 @@ const Container = styled.div`
   background-color: white;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+
+  user-select: none;
 `;
 
 const HeadWrap = styled.div`

@@ -22,7 +22,7 @@ export class PostService {
       order: {
         create_time: "DESC"
       },
-      skip: page,
+      skip: page * limit,
       take: limit,
     });
 
@@ -59,6 +59,17 @@ export class PostService {
   public async deletePostByIdx(id: string) {
     const result = await this.postRepo.delete({
       id
+    });
+
+    return result;
+  }
+
+  // 게시글 카테고리 별 전체 조회
+  public async getAllPostDataByCategory(category: string) {
+    const result = await this.postRepo.find({
+      where: {
+        category,
+      }
     });
 
     return result;

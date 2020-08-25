@@ -13,12 +13,12 @@ export class PostCtrl {
   
   // 게시글 조회 함수
   public getPosts = async (req: AuthRequest, res: Response) => {
-    const limit: string  = req.query.limit as string;
+    // const limit: string  = req.query.limit as string;
     const page: string  = req.query.page as string;
     const category: string  = req.query.category as string;
 
     // limit, page의 요청 방식이 올바른지 확인 하는 코드입니다.
-    if (!limit || parseInt(limit) < 0 || !page || parseInt(page)) {
+    if (!page || parseInt(page) < 0) {
           res.status(400).json({
             status: 400,
             message: '양식이 맞지 않아요!'
@@ -28,14 +28,21 @@ export class PostCtrl {
         }
 
     try {
+      const limit = 10;
+
       // DB에 있는 데이터를 조회 합니다.
-      const posts = await this.postService.getPostsByLimit(parseInt(limit, 10), parseInt(page, 10), category);
+      const posts = await this.postService.getPostsByLimit(limit, parseInt(page, 10), category);
+      const allPosts = await this.postService.getAllPostDataByCategory(category); 
+      
+
+      const totalPage = Math.ceil(allPosts.length / limit);
 
       res.status(200).json({
         status: 200,
         message: '게시글 조회 성공',
         data: {
           posts,
+          totalPage,
         }
       });
     } catch (error) {

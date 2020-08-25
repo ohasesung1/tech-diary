@@ -1,6 +1,6 @@
-import { all, call, takeLatest, put } from 'redux-saga/effects';
+import { all, call, takeLatest, put, throttle, fork } from 'redux-saga/effects';
 import postRepo from './post.repository';
-import { fetchPostGet, setPostGetErrorMsg } from 'store/modules/post';
+import { fetchPostGet, setPostGetErrorMsg, POST_GET_REQUEST } from 'store/modules/post';
 
 function* executeCallback(cb?: () => void) {
   if (!!cb) {
@@ -8,11 +8,12 @@ function* executeCallback(cb?: () => void) {
   }
 };
 
-function* getPost(action: ReturnType<typeof fetchPostGet.request>) {
-  const { page, limit, category, successCB, failureCB } = action.payload;
+function* getPostSaga(action: ReturnType<typeof fetchPostGet.request>) {
+
+  const { page, category, successCB, failureCB } = action.payload;
+  
   const { status, data } = yield call(postRepo.postGetByCategoryReq, {
     page,
-    limit,
     category,
   });
 
@@ -28,12 +29,19 @@ function* getPost(action: ReturnType<typeof fetchPostGet.request>) {
     return;
   }
 
-  yield put(fetchPostGet.success(data));
+  const payload = {
+    posts: data.data.posts,
+    totalPage: data.data.totalPage,
+  }
+
+  yield put(fetchPostGet.success(payload));
   yield executeCallback(successCB);
 };
 
-export function* getPostSaga() {
-  yield all([
-    takeLatest(fetchPostGet.request, getPost),
-  ]);
+export default function* postSagas() {
+  yield all([fork(watchGetPosts)]);
 };
+
+function* watchGetPosts() {
+  yield throttle(1000, POST_GET_REQUEST, getPostSaga);
+}

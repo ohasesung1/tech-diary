@@ -45,12 +45,12 @@ export const AsideSemen = styled.aside<{hidden: boolean}>`
   ${(props) => props.hidden && css`
     display: none;
   `}
-  
+
 `;
 
 export const MainSeme = styled.main`
   label: main_semen;
-  min-height: 100rem;
+  min-height: 50rem;
 `;
 
 export const MainSemeWarp = styled.main`

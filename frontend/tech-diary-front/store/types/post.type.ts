@@ -8,9 +8,13 @@ export type Post = {
   createTime: string;
 };
 
+export type PostSuccess = {
+  posts: Post[];
+  totalPage: number;
+}
+
 export type PostGet = {
   page: number;
-  limit: number;
   category: string;
 
   successCB?: () => void;

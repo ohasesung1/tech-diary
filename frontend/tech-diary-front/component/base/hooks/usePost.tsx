@@ -1,9 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getPostSaga } from 'store/sagas/post/post.saga';
+import { useDispatch } from "react-redux";
 import { POST_GET_REQUEST } from 'store/modules/post';
 
-export const usePost = (page: number, limit: number, category: string) => {
+function usePost(page: number, category: string) {
   const dispatch = useDispatch();
-  dispatch(getPostSaga());
-  
+  dispatch({
+    POST_GET_REQUEST,
+    page,
+    category,
+  })
 };
+
+export default usePost;

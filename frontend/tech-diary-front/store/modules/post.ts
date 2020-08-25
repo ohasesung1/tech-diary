@@ -1,17 +1,19 @@
 import { createAsyncAction, ActionType, createReducer, createAction } from 'typesafe-actions';
 import produce from 'immer';
 import { AxiosError } from 'axios';
-import { PostGet, Post } from 'store/types/post.type';
+import { PostGet, Post, PostSuccess } from 'store/types/post.type';
 
 type PostState = {
   loading?: boolean;
   postData?: Post[];
+  totalPage: number;
   getPostErrorMsg?: string;
 };
 
 const initialState: PostState = {
   loading: false,
   postData: [],
+  totalPage: 0,
   getPostErrorMsg: '',
 };
 
@@ -26,7 +28,7 @@ export const fetchPostGet = createAsyncAction(
   POST_GET_REQUEST,
   POST_GET_SUCCESS,
   POST_GET_FAILURE
-)<PostGet, Post[], AxiosError>();
+)<PostGet, PostSuccess, AxiosError>();
 
 const actions = {
   setPostGetErrorMsg,
@@ -43,7 +45,9 @@ export default createReducer<PostState, PostAction>(initialState, {
 
   [POST_GET_SUCCESS]: (state, action) => ({ 
     ...state,
-    postData: action.payload
+    postData: action.payload.posts,
+    totalPage: action.payload.totalPage,
+    loading: false,
   }),
 
   [POST_GET_FAILURE]: (state) => ({ 
