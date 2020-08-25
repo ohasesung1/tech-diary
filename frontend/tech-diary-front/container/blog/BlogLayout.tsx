@@ -1,14 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import PageHeade from 'component/base/PageHeade';
 import PostList from 'component/common/PostList';
-import PageNationList from 'component/common/PageNationList';
+import PageNationList from 'component/common/PageNation/PageNationList';
 import Loading from 'component/common/Loading';
-import { useBlog } from './hooks/useBlog';
+import usePost from '../../component/base/hooks/usePost';
 
 function BlogLayout() {
-  const { loading, postData, page, setPage, totalPage } = useBlog();
-
-  
+  const { loading, postData, page, setPage, totalPage } = usePost('blog');
 
   if (loading || !postData) return (<Loading/>);
   return (

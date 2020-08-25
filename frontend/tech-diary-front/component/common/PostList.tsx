@@ -10,8 +10,6 @@ const PostsWrap = styled.div`
   row-gap: 1rem;
   min-height: 100rem;
 
-  border: 1px solid black;
-
   & > * + * {
     margin: 0.1rem;
   }

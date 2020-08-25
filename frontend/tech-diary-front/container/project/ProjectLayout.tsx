@@ -3,19 +3,23 @@ import PageHeade from 'component/base/PageHeade';
 import { Post } from 'store/types/post.type';
 import PostList from 'component/common/PostList';
 import Loading from 'component/common/Loading';
+import usePost from 'component/base/hooks/usePost';
+import PageNationList from 'component/common/PageNation/PageNationList';
 
 type Props = {
   posts?: Post[];
-  loading?: boolean;
 }
 
-function ProjectLayout({ posts, loading }: Props) {
+function ProjectLayout({ posts }: Props) {
+  const { loading, postData, page, setPage, totalPage } = usePost('project');
 
-  if (loading || !posts) return (<Loading/>);
+
+  if (loading || !postData) return (<Loading/>);
   return (
     <>
       <PageHeade title={'Project'}/>
-      <PostList items={posts || []} />
+      <PostList items={posts || postData || []} />
+      <PageNationList totalPage={totalPage} setPage={setPage} page={page}/>
     </>
   );
 }

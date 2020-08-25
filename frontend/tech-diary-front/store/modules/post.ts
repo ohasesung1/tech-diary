@@ -28,7 +28,7 @@ export const fetchPostGet = createAsyncAction(
   POST_GET_REQUEST,
   POST_GET_SUCCESS,
   POST_GET_FAILURE
-)<PostGet, PostSuccess, AxiosError>();
+)<PostGet, PostSuccess, Error>();
 
 const actions = {
   setPostGetErrorMsg,
