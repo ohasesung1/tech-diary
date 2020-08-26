@@ -4,11 +4,19 @@ import { MainTemplate } from 'component/template/MainTemplate';
 import { env } from 'libs/config/env';
 import { useRouter } from 'next/router';
 import SinglePost from 'component/common/SinglePost';
+import usePostDetail from 'component/base/hooks/usePostDetail';
+import Loading from 'component/common/Loading';
 
-// 게시글 상세조회를 위한 공통 페이지
 function PostSinglePage() {
   const router = useRouter();
   const postId = router.query.id as string;
+
+  const { loading, postData } = usePostDetail(postId);
+
+  console.log(postData);
+  
+
+  if (loading || !postData) return (<Loading/>);
 
   return (
     <>
@@ -16,7 +24,7 @@ function PostSinglePage() {
         <title>{env.appName}</title>
       </Head>
       <MainTemplate>
-        <SinglePost postId={postId} />
+        <SinglePost data={postData}/>
       </MainTemplate>
     </>
   );

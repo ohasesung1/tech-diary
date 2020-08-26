@@ -54,7 +54,7 @@ export class PostCtrl {
     }
   };
 
-  // 게시글 조회 함수
+  // 게시글 상세 조회 함수
   public getPostById = async (req: AuthRequest, res: Response) => {
     const id: string  = req.query.id as string;
 
@@ -69,8 +69,7 @@ export class PostCtrl {
     }
 
     try {
-      console.log(id);
-      
+
       // DB에 있는 데이터를 조회 합니다.
       const post = await this.postService.getPostById(id);
 

@@ -18,7 +18,7 @@ function ProjectLayout({ posts }: Props) {
   return (
     <>
       <PageHeade title={'Project'}/>
-      <PostList items={posts || posts || []} page={'project'}/>
+      <PostList items={posts || postData || []} page={'project'}/>
       <PageNationList totalPage={totalPage} setPage={setPage} page={page}/>
     </>
   );

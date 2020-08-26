@@ -14,14 +14,21 @@ import checkboxPlugin from 'libs/remark/checkboxPlugin';
 import { markdownCss } from 'libs/remark/markdownTheme';
 import { prismThemes } from 'libs/remark/prismTheme';
 
-const MarkdownRenderBlock = styled.div`
+const MarkdownRenderBlock = styled.div<{ fontSize?: string }>`
   label: markdown-block;
   ${markdownCss}
   ${prismThemes['darcula']}
 
   & * {
     font-size: 0.935rem;
+    line-height: 200%;
   }
+
+  ${(props) => props.fontSize && `
+    & * {
+      font-size: ${props.fontSize};
+    }
+  `}
 `
 
 function fillter(html: string) {
@@ -58,9 +65,10 @@ function fillter(html: string) {
 
 type MarkdownRenderProps = {
   markdown: string;
+  fontSize?: string;
 };
 
-function MarkdownRender({ markdown }: MarkdownRenderProps) {
+function MarkdownRender({ markdown, fontSize }: MarkdownRenderProps) {
   const html = fillter(
     remark()
       .use(remarkParse)
@@ -77,7 +85,7 @@ function MarkdownRender({ markdown }: MarkdownRenderProps) {
   const element = parse(html);
 
   return (
-    <MarkdownRenderBlock>
+    <MarkdownRenderBlock fontSize={fontSize}>
       {element}
     </MarkdownRenderBlock>
   );
