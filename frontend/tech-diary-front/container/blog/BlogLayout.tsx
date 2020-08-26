@@ -12,7 +12,7 @@ function BlogLayout() {
   return (
     <>
       <PageHeade title={'Blog'}/>
-      <PostList items={postData || []} />
+      <PostList items={postData || []} page={'blog'}/>
       <PageNationList totalPage={totalPage} setPage={setPage} page={page}/>
     </>
   );

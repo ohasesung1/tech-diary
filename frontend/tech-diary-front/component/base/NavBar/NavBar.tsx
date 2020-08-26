@@ -65,6 +65,7 @@ const NavList = styled.ul`
   label: nav_list;
   width: 100%;
   padding-top: 3rem;
+  /* border: 1px solid white; */
 
   ${mediaQuery.sm} {
     display: flex;
@@ -73,7 +74,7 @@ const NavList = styled.ul`
     padding-top: 0;
   }
 
-  & > * + * {
+  & > * {
     margin-top: 0.5rem;
   }
 `;
@@ -84,7 +85,7 @@ function NavBar() {
       <Content>
         <ProfileWrap>
           <ProfileImageWrap>
-            <ProfileImage src="files/profileImage.png" alt="profile_image_png"/>
+            <ProfileImage src="/files/profileImage.png" alt="profile_image_png"/>
           </ProfileImageWrap>
           <Intro>
             {`안녕하세요, 탐험하고 모험하는 개발자 \n 오해성입니다!`}

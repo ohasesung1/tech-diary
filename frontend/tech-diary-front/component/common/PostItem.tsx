@@ -4,6 +4,7 @@ import { css } from "@emotion/core";
 import { Post } from 'store/types/post.type';
 import Link from 'next/link';
 import moment from 'moment';
+import MarkdownRender from './MarkdownRender';
 
 const Container = styled.div`
   label: post-item;
@@ -76,16 +77,17 @@ const LinkFontStyle = styled.a<{type?: string}>`
   }
 
   ${(props) => props.type === 'title' && css`
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 500;
   `}
 `;
 
 type Props = {
   data: Post;
+  page: string;
 };
 
-function PostItem({ data }: Props) {
+function PostItem({ data, page }: Props) {
   
   const {
     id,
@@ -96,28 +98,28 @@ function PostItem({ data }: Props) {
   } = data;
 
   const dateFormat = moment(createTime).format('YYYY년 MM월 DD일');
-
+  
   return (
     <Container>
       <Thumnail src={thumbnail_address}/>
 
       <HeadWrap>
-        <Link href={`/post/${id}`}>
+        <Link href={`${page}/${id}`}>
           <LinkFontStyle type={'title'}>{title}</LinkFontStyle>
         </Link>
         <div>
-          <Link href={`/post/${id}`}>
+          <Link href={`${page}/${id}`}>
             <LinkFontStyle>{dateFormat}</LinkFontStyle>
           </Link>
         </div>
       </HeadWrap>
 
       <ContentWrap>
-        {contents}
+        <MarkdownRender markdown={contents}/>
       </ContentWrap>
 
       <BottomWrap>
-        <Link href={`/post/${id}`}>
+        <Link href={`/${id}`}>
           <LinkFontStyle>Read More...</LinkFontStyle>
         </Link>
       </BottomWrap>

@@ -7,25 +7,22 @@ const PostsWrap = styled.div`
   label: posts_wrap;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, auto));
-  row-gap: 1rem;
+  grid-template-rows: repeat(auto-fit, 30rem);
+  row-gap: 2rem;
   min-height: 100rem;
-
-  & > * + * {
-    margin: 0.1rem;
-  }
 `;
-
 
 type Props = {
   items: Post[];
+  page: string;
 };
 
-function PostList({ items }: Props) {
+function PostList({ items, page }: Props) {
   return (
     <PostsWrap>
       {
         items.map((item, i) => {
-          return <PostItem key={i} data={item} />
+          return <PostItem key={i} data={item} page={page}/>
         })
       }
     </PostsWrap>

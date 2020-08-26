@@ -59,7 +59,14 @@ type Props = {
 
 function NavItem({ href, children }: Props) {
   const router = useRouter();
-  const active = router.pathname === href;
+
+  const pathNameArray = router.pathname.split('/');
+
+  if (pathNameArray[1] === 'project') {
+    pathNameArray[1] = '';
+  }
+
+  const active = (router.pathname === href) || `/${pathNameArray[1]}` === href;
 
   return (
     <Link href={href}>

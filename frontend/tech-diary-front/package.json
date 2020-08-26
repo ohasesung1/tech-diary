@@ -13,17 +13,29 @@
     "@types/jest": "^26.0.10",
     "animate-css-grid": "^1.4.3",
     "axios": "^0.19.2",
+    "html-react-parser": "^0.13.0",
     "immer": "^7.0.7",
     "jest": "^26.4.0",
     "moment": "^2.27.0",
     "next": "9.5.2",
     "next-redux-wrapper": "^6.0.2",
+    "prismjs": "^1.21.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-icons": "^3.11.0",
+    "react-markdown": "^4.3.1",
+    "react-markdown-renderer": "^1.4.0",
     "react-redux": "^7.2.1",
     "redux-actions": "^2.6.5",
     "redux-saga": "^1.1.3",
+    "rehype-raw": "^4.0.2",
+    "rehype-stringify": "^8.0.0",
+    "remark": "^12.0.1",
+    "remark-breaks": "^2.0.0",
+    "remark-parse": "^8.0.3",
+    "remark-rehype": "^7.0.0",
+    "remark-slug": "^6.0.0",
+    "sanitize-html": "^1.27.3",
     "typesafe-actions": "^5.1.0"
   },
   "devDependencies": {
@@ -32,6 +44,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/redux-actions": "^2.6.1",
     "@types/redux-saga": "^0.10.5",
+    "@types/sanitize-html": "^1.23.3",
     "typescript": "^3.9.7"
   }
 }

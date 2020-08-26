@@ -7,7 +7,6 @@ import { NextPageContext } from 'next';
 import axios from 'axios';
 import { Post } from 'store/types/post.type';
 
-
 type Props = {
   posts?: Post[];
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PageHeade from 'component/base/PageHeade';
 import { Post } from 'store/types/post.type';
 import PostList from 'component/common/PostList';
@@ -18,7 +18,7 @@ function ProjectLayout({ posts }: Props) {
   return (
     <>
       <PageHeade title={'Project'}/>
-      <PostList items={posts || postData || []} />
+      <PostList items={posts || posts || []} page={'project'}/>
       <PageNationList totalPage={totalPage} setPage={setPage} page={page}/>
     </>
   );
