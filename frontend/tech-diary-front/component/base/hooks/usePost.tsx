@@ -10,13 +10,13 @@ import { POST_GET_REQUEST } from 'store/modules/post';
   const [page, setPage] = useState(0);
 
   const fetchBlogData = useCallback(() => {
-      dispatch({
-        type: POST_GET_REQUEST,
-        payload: {
-          page,
-          category,
-        }
-      });
+    dispatch({
+      type: POST_GET_REQUEST,
+      payload: {
+        page,
+        category,
+      }
+    });
   }, [page]);
 
   useEffect(() => {

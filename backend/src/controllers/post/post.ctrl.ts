@@ -11,7 +11,7 @@ export class PostCtrl {
     private postService: PostService,
   ) { }
   
-  // 게시글 조회 함수
+  // 게시글 리스트 조회 함수
   public getPosts = async (req: AuthRequest, res: Response) => {
     // const limit: string  = req.query.limit as string;
     const page: string  = req.query.page as string;
@@ -43,6 +43,42 @@ export class PostCtrl {
         data: {
           posts,
           totalPage,
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        status: 500,
+        message: '게시글 조회 실패!'
+      });
+    }
+  };
+
+  // 게시글 조회 함수
+  public getPostById = async (req: AuthRequest, res: Response) => {
+    const id: string  = req.query.id as string;
+
+    // id의 요청 방식이 올바른지 확인 하는 코드입니다.
+    if (!id) {
+      res.status(400).json({
+        status: 400,
+        message: '양식이 맞지 않아요!'
+      });
+
+      return
+    }
+
+    try {
+      console.log(id);
+      
+      // DB에 있는 데이터를 조회 합니다.
+      const post = await this.postService.getPostById(id);
+
+      res.status(200).json({
+        status: 200,
+        message: '게시글 조회 성공',
+        data: {
+          post,
         }
       });
     } catch (error) {

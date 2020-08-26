@@ -29,6 +29,28 @@ export class PostService {
     return posts;
   }
 
+  // 게시글 카테고리 별 전체 조회
+  public async getAllPostDataByCategory(category: string) {
+    const result = await this.postRepo.find({
+      where: {
+        category,
+      }
+    });
+
+    return result;
+  }
+
+  // 게시글 id별 조회
+  public async getPostById(id: string) {
+    const result = await this.postRepo.findOne({
+      where: {
+        id,
+      }
+    });
+
+    return result;
+  }
+
   // 게시글 작성
   public async createPost(id:string, title: string, contents: string, category: string, thumbnail_address?: string) {
     const post = await this.postRepo.save({
@@ -59,17 +81,6 @@ export class PostService {
   public async deletePostByIdx(id: string) {
     const result = await this.postRepo.delete({
       id
-    });
-
-    return result;
-  }
-
-  // 게시글 카테고리 별 전체 조회
-  public async getAllPostDataByCategory(category: string) {
-    const result = await this.postRepo.find({
-      where: {
-        category,
-      }
     });
 
     return result;

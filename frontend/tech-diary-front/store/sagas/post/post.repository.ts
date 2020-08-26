@@ -9,6 +9,11 @@ class PostRepository {
     return axios.get(`${server.host}/post?page=${req.page}&category=${req.category}`)
       .catch((error) => error.response);
   }
+
+  public async postGetDetailByIdReq(id: string) {
+    return axios.get(`${server.host}/post/id/?id=${id}`)
+      .catch((error) => error.response);
+  }
 }
 
 export default new PostRepository();

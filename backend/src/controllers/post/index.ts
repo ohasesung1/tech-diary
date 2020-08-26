@@ -21,6 +21,7 @@ export class PostRoute {
   // postCtrl의 함수들을 각각 요청 경로에 따라 route 시켜주는 함수
   private setRouter() {
     this.router.get('/', this.postCtrl.getPosts);
+    this.router.get('/:id', this.postCtrl.getPostById);
     this.router.post('/',authMiddleWare, this.postCtrl.writePost);
     this.router.put('/', this.postCtrl.updatePost);
     this.router.delete('/', this.postCtrl.deletePost);
