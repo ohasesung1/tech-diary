@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from '@emotion/styled';
 import useForm from 'libs/hooks/useForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { AUTH_LOGIN_REQUEST, setLoginErrorMsg } from 'store/modules/auth';
+import { AUTH_LOGIN_REQUEST } from 'store/modules/auth';
 import { RootState } from 'store/modules';
 
 const ErrorMsgWrap = styled.div`

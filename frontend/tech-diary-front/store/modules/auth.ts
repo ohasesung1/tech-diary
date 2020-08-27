@@ -1,5 +1,5 @@
 import { createAsyncAction, ActionType, createReducer, createAction } from "typesafe-actions";
-import { AuthLoginSuccess, AuthLogin } from "store/types/auth.types";
+import { AuthLogin } from "store/types/auth.types";
 import { AxiosError } from "axios";
 
 type AuthState = {

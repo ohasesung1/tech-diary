@@ -5,6 +5,8 @@ import NavItem from './NavItem';
 import { mediaQuery } from 'component/layout/responsive';
 import Modal from 'component/common/Modal';
 import SignInModal from 'component/common/SignInModal';
+import { getStorage } from 'libs/storage';
+import { useEffect } from 'react';
 
 const NavWrap = styled.nav`
   label: nav;
@@ -82,7 +84,7 @@ const NavList = styled.ul`
   }
 `;
 
-const SignInButton = styled.div`
+const SignInButton = styled.div<{token: string}>`
   label: log_in_button;
   margin: 13rem 0;
   color: #adb5bd;
@@ -97,9 +99,21 @@ const SignInButton = styled.div`
   ${mediaQuery.sm} {
     display: none
   }
+
+  ${(props) => props.token && `
+    display: none;
+  `}
 `;
 
 function NavBar() {
+  const token = getStorage('diary-token');
+
+  useEffect(() => {
+
+
+    
+  }, []);
+
   return (
     <NavWrap>
       <Content>
@@ -122,7 +136,7 @@ function NavBar() {
           <NavItem href="/certificate">Certificate</NavItem>
         </NavList>
         <Modal content={<SignInModal/>}>
-          <SignInButton>Sign In</SignInButton>
+          <SignInButton token={token}>Sign In</SignInButton>
         </Modal>
       </Content>
     </NavWrap>
