@@ -1,6 +1,6 @@
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
-import { mediaQuery, breakPoints } from "component/layout/responsive";
+import { mediaQuery } from "component/layout/responsive";
 
 export const Template = styled.div`
   label: template;
@@ -38,7 +38,7 @@ export const AsideSemen = styled.aside<{hidden: boolean}>`
     justify-content: flex-end;
     position: relative;
     width: 100%;
-    height: 20rem;
+    height: 23rem;
     background-color: #191919;
   }
 
@@ -50,7 +50,7 @@ export const AsideSemen = styled.aside<{hidden: boolean}>`
 
 export const MainSeme = styled.main`
   label: main_semen;
-  min-height: 50rem;
+  min-height: 100rem;
 `;
 
 export const MainSemeWarp = styled.main`

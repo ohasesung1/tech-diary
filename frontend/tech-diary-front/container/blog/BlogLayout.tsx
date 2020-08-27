@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeade from 'component/base/PageHeade';
 import PostList from 'component/common/PostList';
-import PageNationList from 'component/common/PageNation/PageNationList';
+import PageNationList from 'component/common/PageNationList';
 import Loading from 'component/common/Loading';
 import usePost from '../../component/base/hooks/usePost';
 

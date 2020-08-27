@@ -49,7 +49,7 @@ const Thumnail = styled.img`
   }
 
   ${mediaQuery.md} {
-    height: 10rem;
+    height: 15rem;
   }
 
   ${mediaQuery.lg} {

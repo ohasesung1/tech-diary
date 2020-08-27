@@ -3,6 +3,8 @@ import { jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import NavItem from './NavItem';
 import { mediaQuery } from 'component/layout/responsive';
+import Modal from 'component/common/Modal';
+import SignInModal from 'component/common/SignInModal';
 
 const NavWrap = styled.nav`
   label: nav;
@@ -13,6 +15,7 @@ const Content = styled.div`
   label: nav_content;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const ProfileWrap = styled.div`
@@ -65,17 +68,34 @@ const NavList = styled.ul`
   label: nav_list;
   width: 100%;
   padding-top: 3rem;
-  /* border: 1px solid white; */
 
   ${mediaQuery.sm} {
     display: flex;
     flex-direction: row;
     height: 4rem;
     padding-top: 0;
+    margin-bottom: 1rem;
   }
 
   & > * {
     margin-top: 0.5rem;
+  }
+`;
+
+const SignInButton = styled.div`
+  label: log_in_button;
+  margin: 13rem 0;
+  color: #adb5bd;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    color: #DDFFAA;
+  }
+
+  ${mediaQuery.sm} {
+    display: none
   }
 `;
 
@@ -101,6 +121,9 @@ function NavBar() {
           <NavItem href="/activity">Activity</NavItem>
           <NavItem href="/certificate">Certificate</NavItem>
         </NavList>
+        <Modal content={<SignInModal/>}>
+          <SignInButton>Sign In</SignInButton>
+        </Modal>
       </Content>
     </NavWrap>
   );

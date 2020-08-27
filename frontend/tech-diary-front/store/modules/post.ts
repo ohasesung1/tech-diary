@@ -1,5 +1,4 @@
 import { createAsyncAction, ActionType, createReducer, createAction } from 'typesafe-actions';
-import produce from 'immer';
 import { AxiosError } from 'axios';
 import { PostGet, Post, PostListResponse } from 'store/types/post.type';
 

@@ -4,7 +4,7 @@ import { Post } from 'store/types/post.type';
 import PostList from 'component/common/PostList';
 import Loading from 'component/common/Loading';
 import usePost from 'component/base/hooks/usePost';
-import PageNationList from 'component/common/PageNation/PageNationList';
+import PageNationList from 'component/common/PageNationList';
 
 type Props = {
   posts?: Post[];

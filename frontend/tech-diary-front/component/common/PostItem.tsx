@@ -5,6 +5,7 @@ import { Post } from 'store/types/post.type';
 import Link from 'next/link';
 import moment from 'moment';
 import MarkdownRender from './MarkdownRender';
+import { flicker } from 'styles/animation';
 
 const Container = styled.div`
   label: post-item;
@@ -37,6 +38,13 @@ const Thumnail = styled.img`
   max-width: 100%;
   height: 10rem;
   border-radius: 5px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transition: 0.3s ease-in-out;
+    opacity: 0.5;
+    cursor: pointer;
+  }
 `;
 
 const ContentWrap = styled.div`
@@ -101,7 +109,9 @@ function PostItem({ data, page }: Props) {
   
   return (
     <Container>
-      <Thumnail src={thumbnail_address}/>
+      <Link href={`${page}/${id}`}>
+        <Thumnail src={thumbnail_address}/>
+      </Link>
 
       <HeadWrap>
         <Link href={`${page}/${id}`}>

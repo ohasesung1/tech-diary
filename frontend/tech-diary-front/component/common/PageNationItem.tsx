@@ -8,8 +8,8 @@ const PageNationItemWrap = styled.div<{ isSelect?: boolean }>`
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  border: 0.2rem solid #20c997;
-  background-color: #20c997;
+  border: 0.2rem solid #51cf66;
+  background-color: #51cf66;
   color: white;
   transition: 0.3s ease-in-out;
   border-radius: 5px;
