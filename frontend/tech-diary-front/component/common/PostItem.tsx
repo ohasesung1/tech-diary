@@ -19,6 +19,8 @@ const Container = styled.div`
   background-color: white;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  
 
   user-select: none;
 `;

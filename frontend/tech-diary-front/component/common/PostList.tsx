@@ -10,6 +10,8 @@ const PostsWrap = styled.div`
   grid-template-rows: repeat(auto-fit, 30rem);
   row-gap: 2rem;
   min-height: 100rem;
+
+  animation-timing-function: 'ease-out';
 `;
 
 type Props = {

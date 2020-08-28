@@ -5,7 +5,7 @@ import NavItem from './NavItem';
 import { mediaQuery } from 'component/layout/responsive';
 import Modal from 'component/common/Modal';
 import SignInModal from 'component/common/SignInModal';
-import { getStorage } from 'libs/storage';
+// import { getStorage } from 'libs/storage';
 import { useEffect } from 'react';
 
 const NavWrap = styled.nav`
@@ -101,12 +101,12 @@ const SignInButton = styled.div<{token: string}>`
   }
 
   ${(props) => props.token && `
-    display: none;
+    
   `}
 `;
 
 function NavBar() {
-  const token = getStorage('diary-token');
+  // const token = getStorage('diary-token');
 
   useEffect(() => {
 
@@ -119,7 +119,7 @@ function NavBar() {
       <Content>
         <ProfileWrap>
           <ProfileImageWrap>
-            <ProfileImage src="/files/profileImage.png" alt="profile_image_png"/>
+            {/* <ProfileImage src="/files/profileImage.png" alt="profile_image_png"/> */}
           </ProfileImageWrap>
           <Intro>
             {`안녕하세요, 탐험하고 모험하는 개발자 \n 오해성입니다!`}
@@ -136,7 +136,7 @@ function NavBar() {
           <NavItem href="/certificate">Certificate</NavItem>
         </NavList>
         <Modal content={<SignInModal/>}>
-          <SignInButton token={token}>Sign In</SignInButton>
+          {/* <SignInButton token={token}>Sign In</SignInButton> */}
         </Modal>
       </Content>
     </NavWrap>
