@@ -7,6 +7,7 @@ import Modal from 'component/common/Modal';
 import SignInModal from 'component/common/SignInModal';
 // import { getStorage } from 'libs/storage';
 import { useEffect } from 'react';
+import { getStorage } from 'libs/storage';
 
 const NavWrap = styled.nav`
   label: nav;
@@ -106,7 +107,7 @@ const SignInButton = styled.div<{token: string}>`
 `;
 
 function NavBar() {
-  // const token = getStorage('diary-token');
+  const token = getStorage('diary-token');
 
   useEffect(() => {
 
