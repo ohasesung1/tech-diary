@@ -107,10 +107,10 @@ const SignInButton = styled.div<{token: string}>`
 `;
 
 function NavBar() {
-  const token = getStorage('diary-token');
+
 
   useEffect(() => {
-
+    const token = getStorage('diary-token');
 
     
   }, []);
