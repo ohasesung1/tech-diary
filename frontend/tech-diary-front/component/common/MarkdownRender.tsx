@@ -21,7 +21,6 @@ const MarkdownRenderBlock = styled.div<{ fontSize?: string }>`
 
   & * {
     font-size: 0.935rem;
-    line-height: 200%;
   }
 
   ${(props) => props.fontSize && `

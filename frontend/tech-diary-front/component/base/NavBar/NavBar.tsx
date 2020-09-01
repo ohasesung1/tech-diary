@@ -85,7 +85,7 @@ const NavList = styled.ul`
   }
 `;
 
-const SignInButton = styled.div<{token: string}>`
+const SignInButton = styled.div<{isToken: boolean}>`
   label: log_in_button;
   margin: 13rem 0;
   color: #adb5bd;
@@ -101,12 +101,13 @@ const SignInButton = styled.div<{token: string}>`
     display: none
   }
 
-  ${(props) => props.token && `
+  ${(props) => props.isToken && `
     
   `}
 `;
 
 function NavBar() {
+  let isToken = false;
 
 
   useEffect(() => {
@@ -120,7 +121,7 @@ function NavBar() {
       <Content>
         <ProfileWrap>
           <ProfileImageWrap>
-            {/* <ProfileImage src="/files/profileImage.png" alt="profile_image_png"/> */}
+            <ProfileImage src="/files/profileImage.png" alt="profile_image_png"/>
           </ProfileImageWrap>
           <Intro>
             {`안녕하세요, 탐험하고 모험하는 개발자 \n 오해성입니다!`}
@@ -137,7 +138,7 @@ function NavBar() {
           <NavItem href="/certificate">Certificate</NavItem>
         </NavList>
         <Modal content={<SignInModal/>}>
-          {/* <SignInButton token={token}>Sign In</SignInButton> */}
+          <SignInButton isToken={isToken}>Sign In</SignInButton>
         </Modal>
       </Content>
     </NavWrap>

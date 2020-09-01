@@ -25,24 +25,16 @@ const PageTitle = styled.div`
   padding-left: 1rem;
 `;
 
-const MenuWrap = styled.div`
-  label: menu_wrap;
-
-`;
-
-
 type Porps = {
   title: string;
-  menus?: ReactNode;
 }
 
-function PageHeade({ title, menus }: Porps) {
+function PageHeade({ title }: Porps) {
   return (
     <>
     <PageHeadeWarp>
       <LayoutWrap>
         <PageTitle>{title}</PageTitle>
-        <MenuWrap>{menus}</MenuWrap>
       </LayoutWrap>
     </PageHeadeWarp>
     </>

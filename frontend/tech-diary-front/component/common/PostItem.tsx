@@ -37,9 +37,9 @@ const Thumnail = styled.img`
   display: flex;
   justify-content: center;
   height: 10rem;
-  max-width: 100%;
+  width: 100%;
   height: 10rem;
-  border-radius: 5px;
+  border-radius: 5px 5px 0;
   transition: 0.3s ease-in-out;
 
   &:hover {
