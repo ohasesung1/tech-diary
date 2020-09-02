@@ -5,9 +5,11 @@ import NavItem from './NavItem';
 import { mediaQuery } from 'component/layout/responsive';
 import Modal from 'component/common/Modal';
 import SignInModal from 'component/common/SignInModal';
-// import { getStorage } from 'libs/storage';
-import { useEffect } from 'react';
-import { getStorage } from 'libs/storage';
+import { useEffect, useState, useCallback } from 'react';
+import { getStorage, removeStorage } from 'libs/storage';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store/modules';
+import { AUTH_LOGOUT_SUCCESS } from 'store/modules/auth';
 
 const NavWrap = styled.nav`
   label: nav;
@@ -85,7 +87,7 @@ const NavList = styled.ul`
   }
 `;
 
-const SignInButton = styled.div<{isToken: boolean}>`
+const SignInButton = styled.div<{isToken?: boolean}>`
   label: log_in_button;
   margin: 13rem 0;
   color: #adb5bd;
@@ -107,14 +109,29 @@ const SignInButton = styled.div<{isToken: boolean}>`
 `;
 
 function NavBar() {
-  let isToken = false;
+  const [isToken, setIsToken] = useState(false);
+  const { isLoginSuccess } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch()
+
+  const onSignOut = useCallback(() => {
+    removeStorage('diary-token');
+    
+    dispatch({
+      type: AUTH_LOGOUT_SUCCESS,
+    });
+    
+    setIsToken(false);
+  }, [dispatch, setIsToken]);
 
 
   useEffect(() => {
     const token = getStorage('diary-token');
 
+    if (token) {
+      setIsToken(true);
+    }
     
-  }, []);
+  }, [isToken, isLoginSuccess]);
 
   return (
     <NavWrap>
@@ -137,9 +154,14 @@ function NavBar() {
           <NavItem href="/activity">Activity</NavItem>
           <NavItem href="/certificate">Certificate</NavItem>
         </NavList>
-        <Modal content={<SignInModal/>}>
-          <SignInButton isToken={isToken}>Sign In</SignInButton>
-        </Modal>
+        {
+          !isToken ? 
+          <Modal content={<SignInModal/>}>
+            <SignInButton isToken={isToken}>Sign In</SignInButton>
+          </Modal>
+          : <SignInButton onClick={() => onSignOut()}>Sign Out</SignInButton>
+        }
+
       </Content>
     </NavWrap>
   );
