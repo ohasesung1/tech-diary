@@ -142,7 +142,7 @@ function PostItem({ data, page }: Props) {
       </ContentWrap>
 
       <BottomWrap>
-        <Link href={`/${id}`}>
+        <Link href={`${page}/${id}`}>
           <LinkFontStyle>Read More...</LinkFontStyle>
         </Link>
       </BottomWrap>
