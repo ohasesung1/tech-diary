@@ -10,7 +10,6 @@ function* executeCallback(cb?: () => void) {
 };
 
 function* onLoginSaga(action: ReturnType<typeof onAuthLogin.request>) {
-
   const { memberId, pw, successCB, failureCB } = action.payload;
 
   const { status, data } = yield call(authRepo.authLogInReq, {
@@ -19,7 +18,6 @@ function* onLoginSaga(action: ReturnType<typeof onAuthLogin.request>) {
   });
 
   if (status === 400) {
-
     yield executeCallback(failureCB);
     yield put(setLoginErrorMsg('양식을 맞춰주세요.'));
     return;
@@ -43,7 +41,6 @@ function* onLoginSaga(action: ReturnType<typeof onAuthLogin.request>) {
   }
 
   setStorage('diary-token', payload.token);
-  yield put(setLoginErrorMsg('success'));
   yield put(onAuthLogin.success());
   yield executeCallback(successCB);
 }

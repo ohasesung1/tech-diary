@@ -37,7 +37,9 @@ const SignInFormWrap = styled.div`
 
 const InputForm = styled.input`
   width: 13rem;
-  height: 1.5rem;
+  height: 2rem;
+
+  border: 0.1px solid #ced4da;
 
   padding: 0.5rem;
 `;
@@ -63,6 +65,12 @@ function SignInModal() {
     pw: '',
   });
 
+  const handleKeyPress = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      onSignIn();
+    }
+  };
+
   const onSignIn = useCallback(() => {
     const { id, pw } = form;
     
@@ -73,15 +81,17 @@ function SignInModal() {
         pw,
       },
     });
-  }, [form.id, form.pw, dispatch]);
+
+  }, [form.id, form.pw, dispatch, authLoginErrorMsg]);
+
 
   return (
     <Container>
       <ErrorMsgWrap>{authLoginErrorMsg}</ErrorMsgWrap>
       <SignInHeader>Sign In</SignInHeader>
       <SignInFormWrap>
-        <InputForm placeholder={"ID"} name={'id'} value={form.id} onChange={onChange}/>
-        <InputForm placeholder={"PW"} name={'pw'} type={'password'} value={form.pw} onChange={onChange}/>
+        <InputForm placeholder={"ID"} name={'id'} value={form.id} onChange={onChange} onKeyDown={(event) => handleKeyPress(event)}/>
+        <InputForm placeholder={"PW"} name={'pw'} type={'password'} value={form.pw} onChange={onChange} onKeyDown={(event) => handleKeyPress(event)}/>
       </SignInFormWrap>
       <SignInButton onClick={onSignIn}>
         Sign In

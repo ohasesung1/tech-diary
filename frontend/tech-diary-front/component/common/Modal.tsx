@@ -46,13 +46,13 @@ type Props = {
 function Modal({ content, children }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { authLoginErrorMsg } = useSelector((state: RootState) => state.auth);
+  const { isLoginSuccess } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
-    if (authLoginErrorMsg === 'success') {
+    if (isLoginSuccess) {
       setIsOpen(false);
     }
-  }, [authLoginErrorMsg]);
+  }, [isLoginSuccess]);
 
   return (
     <>

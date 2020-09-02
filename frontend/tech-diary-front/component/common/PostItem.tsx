@@ -5,7 +5,6 @@ import { Post } from 'store/types/post.type';
 import Link from 'next/link';
 import moment from 'moment';
 import MarkdownRender from './MarkdownRender';
-import { flicker } from 'styles/animation';
 
 const Container = styled.div`
   label: post-item;
@@ -21,7 +20,6 @@ const Container = styled.div`
   border-radius: 5px;
   transition: 0.3s ease-in-out;
   
-
   user-select: none;
 `;
 
@@ -35,18 +33,30 @@ const HeadWrap = styled.div`
 const Thumnail = styled.img`
   label: thumnail;
   display: flex;
+  height: 10rem;
+  width: 20rem;
+  z-index: 0;
   justify-content: center;
-  height: 10rem;
-  width: 100%;
-  height: 10rem;
-  border-radius: 5px 5px 0;
-  transition: 0.3s ease-in-out;
+  border-radius: 5px 5px 0 0;
+  transition: 0.5s ease-in-out;
 
   &:hover {
-    transition: 0.3s ease-in-out;
-    opacity: 0.5;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+
     cursor: pointer;
-  }
+   }
+`;
+
+const ThumnailWarp = styled.span`
+  height: 10rem;
+  width: 20rem;
+  border-radius: 5px 5px 0 0;
+
+  overflow: hidden;
 `;
 
 const ContentWrap = styled.div`
@@ -112,9 +122,10 @@ function PostItem({ data, page }: Props) {
   return (
     <Container>
       <Link href={`${page}/${id}`}>
-        <Thumnail src={thumbnail_address}/>
+        <ThumnailWarp>
+          <Thumnail src={thumbnail_address}/>
+        </ThumnailWarp>
       </Link>
-
       <HeadWrap>
         <Link href={`${page}/${id}`}>
           <LinkFontStyle type={'title'}>{title}</LinkFontStyle>
