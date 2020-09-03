@@ -13,7 +13,6 @@ export class PostCtrl {
   
   // 게시글 리스트 조회 함수
   public getPosts = async (req: AuthRequest, res: Response) => {
-    // const limit: string  = req.query.limit as string;
     const page: string  = req.query.page as string;
     const category: string  = req.query.category as string;
 

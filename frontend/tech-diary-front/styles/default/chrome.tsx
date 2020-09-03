@@ -65,7 +65,8 @@ figure {
 }
 
 q {
-    display: inline
+    display: inline;
+    line-height: 1rem;
 }
 
 q:before {
@@ -270,12 +271,12 @@ pre, xmp, plaintext, listing {
     display: block;
     font-family: monospace;
     white-space: pre;
-    margin: 1__qem 0
+    margin: 1__qem 0;
 }
 
 mark {
     background-color: yellow;
-    color: black
+    color: black;
 }
 
 big {

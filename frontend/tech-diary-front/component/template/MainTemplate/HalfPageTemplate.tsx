@@ -7,8 +7,9 @@ const HalfTemplate = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 100vh;
+  min-height: 100vh;
   border: 1px solid black;
+  padding: 2.5rem;
 
   background-color: white;
 `;

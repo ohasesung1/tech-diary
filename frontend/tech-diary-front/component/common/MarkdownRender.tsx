@@ -14,7 +14,7 @@ import checkboxPlugin from 'libs/remark/checkboxPlugin';
 import { markdownCss } from 'libs/remark/markdownTheme';
 import { prismThemes } from 'libs/remark/prismTheme';
 
-const MarkdownRenderBlock = styled.div<{ fontSize?: string }>`
+const MarkdownRenderBlock = styled.div<{ fontSize?: string, padding?: string }>`
   label: markdown-block;
   ${markdownCss}
   ${prismThemes['darcula']}
@@ -22,10 +22,17 @@ const MarkdownRenderBlock = styled.div<{ fontSize?: string }>`
   & * {
     font-size: 0.935rem;
   }
+  
 
   ${(props) => props.fontSize && `
     & * {
       font-size: ${props.fontSize};
+    }
+  `}
+
+  ${(props) => props.padding && `
+    & * {
+      padding: ${props.padding};
     }
   `}
 `
@@ -65,9 +72,10 @@ function fillter(html: string) {
 type MarkdownRenderProps = {
   markdown: string;
   fontSize?: string;
+  padding?: string;
 };
 
-function MarkdownRender({ markdown, fontSize }: MarkdownRenderProps) {
+function MarkdownRender({ markdown, fontSize, padding }: MarkdownRenderProps) {
   const html = fillter(
     remark()
       .use(remarkParse)
@@ -84,7 +92,7 @@ function MarkdownRender({ markdown, fontSize }: MarkdownRenderProps) {
   const element = parse(html);
 
   return (
-    <MarkdownRenderBlock fontSize={fontSize}>
+    <MarkdownRenderBlock fontSize={fontSize} padding={padding}>
       {element}
     </MarkdownRenderBlock>
   );
