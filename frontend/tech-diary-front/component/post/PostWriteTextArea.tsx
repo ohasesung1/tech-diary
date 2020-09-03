@@ -4,11 +4,15 @@ import styled from '@emotion/styled';
 const TextArea = styled.textarea`
   label: post_write_area_wrap;
   width: 100%;
-  height: 40rem;
+  height: 45rem;
   padding: 1rem;
   resize: none;
   font-size: 1.5rem;
-  border: 1px solid black;
+  border: 0px;
+  overflow-x: hidden;
+  margin-bottom: 1rem;
+  /* scroll: none; */
+  /* border: 1px solid black; */
 `;
 
 type Props = {

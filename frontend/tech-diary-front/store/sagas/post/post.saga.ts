@@ -2,6 +2,7 @@ import { all, call, takeLatest, put, throttle, fork } from 'redux-saga/effects';
 import postRepo from './post.repository';
 import { fetchPostGet, setPostGetErrorMsg, POST_GET_REQUEST } from 'store/modules/post';
 import { POST_GET_DETAIL_REQUEST, fetchPostDetailGet } from 'store/modules/postDetail';
+import { onPostWrite, setPostWriteErrorMsg, POST_WRITE_REQUEST } from 'store/modules/postWrite';
 
 function* executeCallback(cb?: () => void) {
   if (!!cb) {
@@ -11,7 +12,7 @@ function* executeCallback(cb?: () => void) {
 
 function* getPostSaga(action: ReturnType<typeof fetchPostGet.request>) {
   const { page, category, successCB, failureCB } = action.payload;
-  
+
   const { status, data } = yield call(postRepo.postGetByCategoryReq, {
     page,
     category,
@@ -60,8 +61,33 @@ function* getPostDetailSaga(action: ReturnType<typeof fetchPostDetailGet.request
   yield executeCallback(successCB);
 };
 
+function* onPostWriteSaga(action: ReturnType<typeof onPostWrite.request>) {
+  const { title, contents, category, failureCB, successCB } = action.payload;
+
+  const { status } = yield call(postRepo.postWriteReq, {
+    title,
+    contents,
+    category,
+  });
+
+  if (status === 400) {
+    yield executeCallback(failureCB);
+    yield put(setPostWriteErrorMsg('양식을 맞춰주세요.'));
+    return;
+  }
+
+  if (status === 500) {
+    yield executeCallback(failureCB);
+    yield put(setPostWriteErrorMsg('Server Error!'));
+    return;
+  }
+
+  yield put(onPostWrite.success());
+  yield executeCallback(successCB);
+}
+
 export default function* postSagas() {
-  yield all([fork(watchGetPosts), fork(watchGetPostDetail)]);
+  yield all([fork(watchGetPosts), fork(watchGetPostDetail), fork(watchOnPostWrite)]);
 };
 
 function* watchGetPosts() {
@@ -70,4 +96,8 @@ function* watchGetPosts() {
 
 function* watchGetPostDetail() {
   yield takeLatest(POST_GET_DETAIL_REQUEST, getPostDetailSaga)
+}
+
+function* watchOnPostWrite() {
+  yield takeLatest(POST_WRITE_REQUEST, onPostWriteSaga);
 }

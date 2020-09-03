@@ -28,3 +28,12 @@ export type PostGetById = {
   successCB?: () => void;
   failureCB?: () => void;
 };
+
+export type PostWriteReq = {
+  title: string;
+  contents: string;
+  category: string;
+
+  successCB?: () => void;
+  failureCB?: () => void;
+}

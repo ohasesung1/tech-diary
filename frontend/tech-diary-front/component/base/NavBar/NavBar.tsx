@@ -102,10 +102,6 @@ const SignInButton = styled.div<{isToken?: boolean}>`
   ${mediaQuery.sm} {
     display: none
   }
-
-  ${(props) => props.isToken && `
-    
-  `}
 `;
 
 function NavBar() {

@@ -1,10 +1,14 @@
 import React from 'react';
 import PostWriter from 'component/post/PostWriter';
 
-function PostWriterLayout({}) {
+type Props = {
+  category: string;
+}
+
+function PostWriterLayout({ category }: Props) {
   return (
     <>
-      <PostWriter/>
+      <PostWriter category={category}/>
     </>
   );
 }

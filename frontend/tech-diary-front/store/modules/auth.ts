@@ -18,7 +18,7 @@ const AUTH_LOGIN_ERROR_MSG = 'auth/AUTH_LOGIN_ERROR_MSG';
 export const AUTH_LOGIN_REQUEST = 'auth/AUTH_LOGIN_REQUEST';
 export const AUTH_LOGIN_SUCCESS = 'auth/AUTH_LOGIN_SUCCESS';
 export const AUTH_LOGIN_FAILURE = 'auth/AUTH_LOGIN_FAILURE';
-export const AUTH_LOGOUT_SUCCESS = 'auth/AUTH_LOGOUT_SUCCESS'
+export const AUTH_LOGOUT_SUCCESS = 'auth/AUTH_LOGOUT_SUCCESS';
 
 export const setLoginErrorMsg = createAction(AUTH_LOGIN_ERROR_MSG)<string>();
 export const onAuthLogin = createAsyncAction(
@@ -33,7 +33,7 @@ const actions = {
   onAuthLogin,
 };
 
-type AuthAction = ActionType<typeof actions>
+type AuthAction = ActionType<typeof actions>;
 
 export default createReducer<AuthState, AuthAction>(initialState, {
   [AUTH_LOGIN_REQUEST]: (state) => ({

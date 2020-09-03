@@ -4,8 +4,11 @@ import styled from '@emotion/styled';
 const TitleInput = styled.input`
   label: title_input;
   width: 100%;
-  height: 8rem;
-  font-size: 3rem;
+  height: 6rem;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  border: 0;
+  border-bottom: 2px solid #ced4da;
 
   padding-left: 1rem;
 `;

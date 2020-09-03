@@ -64,6 +64,7 @@ function PageHeade({ title }: Porps) {
   const [isToken, setIsToken] = useState(false);
   const { isLoginSuccess } = useSelector((state: RootState) => state.auth);
 
+
   useEffect(() => {
     const token = getStorage('diary-token');
 
@@ -83,7 +84,7 @@ function PageHeade({ title }: Porps) {
         {
           isToken ? 
           <WritePostBtnWrap>
-            <Link href={`post-write`}>
+            <Link href={`${title.toLowerCase()}/post-write`}>
             <WritePostBtn>
               <HiPencilAlt style={{ width: '2rem', height: '2rem', color: 'white' }}/>
             </WritePostBtn>
