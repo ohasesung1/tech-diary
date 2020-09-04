@@ -51,6 +51,10 @@ export const AsideSemen = styled.aside<{hidden: boolean}>`
 export const MainSeme = styled.main`
   label: main_semen;
   min-height: 100rem;
+
+  ${mediaQuery.sm} {
+    min-height: 50rem;
+  }
 `;
 
 export const MainSemeWarp = styled.main`

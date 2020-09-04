@@ -60,7 +60,7 @@ const Thumnail = styled.img`
 const PostInfoWrap = styled.div`
   label: post_info_wrap;
   display: column;
-  height: 6rem;
+  min-height: 6rem;
 `;
 
 const Title = styled.div`

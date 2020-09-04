@@ -10,7 +10,7 @@ const PageHeadeWarp = styled.header`
   label: header;
   width: 100%;
   z-index: 100;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   background-color: white;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
 `;

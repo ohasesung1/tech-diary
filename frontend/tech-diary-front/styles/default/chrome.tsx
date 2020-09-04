@@ -20,7 +20,7 @@ a:-webkit-any-link:active {
 
 p {
   display: block;
-  line-height: 1.2;
+  line-height: 180%;
   margin: 1rem 0;
   -webkit-margin-before: 1__qem;
   -webkit-margin-after: 1__qem;

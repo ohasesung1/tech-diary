@@ -33,6 +33,7 @@ export type PostWriteReq = {
   title: string;
   contents: string;
   category: string;
+  thumnailAddress: string;
 
   successCB?: () => void;
   failureCB?: () => void;

@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import "reflect-metadata";
 
 import { Container } from 'typedi';
 import { createConnection, Connection, useContainer } from 'typeorm';

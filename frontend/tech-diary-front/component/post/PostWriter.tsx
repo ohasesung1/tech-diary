@@ -1,14 +1,14 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from '@emotion/styled';
 import HalfPageTemplate from 'component/template/MainTemplate/HalfPageTemplate';
 import PostWriteTitleInput from './PostWriteTitleInput';
-import PostWriterToolBox from './PostWriterToolBox';
 import PostWriteTextArea from './PostWriteTextArea';
 import PostWriteBottom from './PostWriteBottom';
 import useForm from 'libs/hooks/useForm';
 import MarkdownRender from 'component/common/MarkdownRender';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { POST_WRITE_REQUEST } from 'store/modules/postWrite';
+import { RootState } from 'store/modules';
 
 const Container = styled.div`
   label: post_write_container;
@@ -30,7 +30,7 @@ const validate = {
     }
   },
   contents: (text: string) => {
-    if (text.length > 3000 || text.length === 0) {
+    if (text.length === 0) {
       return '내용 양식을 지켜주세요.';
     }
   },
@@ -48,14 +48,15 @@ type Props = {
 
 function PostWriter({ category }: Props) {
   const dispatch = useDispatch();
-  const [form, onChange] = useForm<CreatePostForm>({
+  const [form, onChange, dispatchForForm] = useForm<CreatePostForm>({
     title: '',
     contents: '',
-    thumnailAddress: '',
+    thumnailAddress: 'http://localhost:8000/static/img/thumnail_default.png',
   });
+  const { imgs } = useSelector((state: RootState) => state.upload);
 
   const onPostWrite = useCallback(() => {
-    const { title, contents } = form;
+    const { title, contents, thumnailAddress } = form;
 
     const errorMsg = validate.title(title) 
     || validate.contents(contents)
@@ -72,10 +73,23 @@ function PostWriter({ category }: Props) {
       title,
       contents,
       category,
+      thumnailAddress,
     },
   });
-  }, [form, dispatch]);
+  }, [form, dispatch, imgs]);
 
+
+  useEffect(() => {
+    if (imgs.length) {
+
+      const imageAddress = `![](${imgs})`;
+
+      dispatchForForm({
+        name: 'contents',
+        value: form.contents += imageAddress,
+      });
+    }
+  }, [imgs]);
 
 
   return (
@@ -93,7 +107,9 @@ function PostWriter({ category }: Props) {
             onChange={onChange}
             name={"contents"}
           />
-          <PostWriteBottom onPostWrite={onPostWrite}/>
+          <PostWriteBottom 
+            onPostWrite={onPostWrite}
+            dispatchForForm={dispatchForForm}/>
         </FormContainer>
       </HalfPageTemplate>
       <HalfPageTemplate color={'#f8f9fa'}>

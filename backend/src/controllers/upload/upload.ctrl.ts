@@ -13,7 +13,7 @@ export class UploadCtrl {
     const imgs = [];
 
     // 파일 길이가 0 이하일 경우
-    if (files.length <= 0) {
+    if (!files) {
       res.status(400).json({
         status: 400,
         message: '저장될 이미지가 없습니다.'

@@ -4,6 +4,9 @@ import { PostService } from '../../services/post.service';
 import { AuthRequest } from '../../typings'; 
 import * as Validate  from '../../lib/validate';
 import { generatedId } from '../../lib/method.lib';
+import config from '../../../config';
+
+const { replace } = config;
 
 @Service() // typedi를 이용한 의존성 주입 위한 설정
 export class PostCtrl {
@@ -33,7 +36,6 @@ export class PostCtrl {
       const posts = await this.postService.getPostsByLimit(limit, parseInt(page, 10), category);
       const allPosts = await this.postService.getAllPostDataByCategory(category); 
       
-
       const totalPage = Math.ceil(allPosts.length / limit);
 
       res.status(200).json({
@@ -107,9 +109,15 @@ export class PostCtrl {
     }
 
     try {
-      const { title, contents, thumnailAddress, category } = body;
+      const { title, contents, category } = body;
+      let { thumnailAddress } = body;
 
       const id: string = await generatedId();
+
+      if (!thumnailAddress) {
+        thumnailAddress = `http://${replace}/static/img/thumnail_default.png`;
+      }
+      
 
       // DB에 저장하는 함수를 실행합니다.
       await this.postService.createPost(id, title, contents, category, thumnailAddress);

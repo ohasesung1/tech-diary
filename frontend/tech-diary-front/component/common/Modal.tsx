@@ -23,7 +23,7 @@ const Container = styled.div`
   label: container;
   position: relative;
   width: 33rem;
-  height: 23rem;
+  height: 25rem;
   background-color: white;
   border-radius: 5px;
 

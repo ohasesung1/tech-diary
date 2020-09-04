@@ -8,3 +8,7 @@ export type UploadFileReq = {
 export type UploadFileSuccess = {
   imgs: Array<string>;
 };
+
+export type UploadThumnailSuccess = {
+  thumnail: string;
+};

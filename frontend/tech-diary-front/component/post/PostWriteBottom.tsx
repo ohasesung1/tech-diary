@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from '@emotion/styled';
 import Button from 'component/common/Button';
 import PostWriteUploadImg from './PostWriteUploadImg';
+import Modal from 'component/common/Modal';
+import ThumnailSetModal from './ThumnailSetModal';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
   label: post_write_bottom;
@@ -26,38 +29,36 @@ const GoToBackButton = styled.div`
   justify-content: flex-start;
 `;
 
-const UploadImgButtonLabel = styled.label`
-  label: upload_img_button_label;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 7rem;
-  height: 3rem;
-
-  color: white;
-  background-color: #51cf66;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-right: 2rem;
-
-  cursor: pointer;
-`;
-
 type Props = {
   onPostWrite?: () => void;
+  dispatchForForm?: any;
 }
 
 
-function PostWriteBottom({ onPostWrite }: Props) {
+function PostWriteBottom({ onPostWrite, dispatchForForm }: Props) {
+  const router = useRouter();
+
+  const goBackPage = useCallback(() => {
+    if (window.confirm('작성한 내용이 사라질 수 있습니다. 정말 뒤로 가시겠습니까?')) {
+      router.back();
+    } else {
+      return;
+    }
+  }, [router]);
+
+
   return (
     <Container>
       <GoToBackButton>
-        <Button type={'primary-trans'}>뒤로가기</Button>
+        <Button type={'primary-trans'} onClick={() => goBackPage()}>뒤로가기</Button>
       </GoToBackButton>
       <WriteButtonWrap>
-        <UploadImgButtonLabel htmlFor={'image_upload'}>사진 업로드</UploadImgButtonLabel>
         <PostWriteUploadImg/>
-        <Button type={'primary'} onClick={onPostWrite}>출간하기</Button>
+        <Modal content={<ThumnailSetModal 
+          dispatchForForm={dispatchForForm}
+          onPostWrite={onPostWrite}/>}>
+          <Button type={'primary'}>썸네일</Button>
+        </Modal>
       </WriteButtonWrap>
     </Container>
   );

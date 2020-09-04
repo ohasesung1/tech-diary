@@ -12,7 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 20rem;
-  height: 30rem;
+  min-height: 30rem;
   align-self: center;
   justify-self: center;
   background-color: white;
@@ -26,7 +26,7 @@ const Container = styled.div`
 const HeadWrap = styled.div`
   label: head_wrap;
   width: 100%;
-  height: 5rem;
+  min-height: 5rem;
   padding: 1rem;
 `;
 

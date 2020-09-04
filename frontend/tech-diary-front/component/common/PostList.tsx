@@ -8,7 +8,7 @@ const PostsWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, auto));
   grid-template-rows: repeat(auto-fit, 30rem);
-  row-gap: 2rem;
+  row-gap: 5rem;
   min-height: 100rem;
 
   animation-timing-function: 'ease-out';

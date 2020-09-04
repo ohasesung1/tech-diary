@@ -14,7 +14,7 @@ export const loginValidate = (body: Object) => {
 export const writePostValidate = (body: Object) => {
   const schema = Joi.object().keys({
     title: Joi.string().max(50).required(),
-    contents: Joi.string().max(3000).required(),
+    contents: Joi.string().required(),
     category: Joi.string().required(),
     thumnailAddress: Joi.string().allow(null),
   });

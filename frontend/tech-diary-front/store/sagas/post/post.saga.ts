@@ -62,12 +62,13 @@ function* getPostDetailSaga(action: ReturnType<typeof fetchPostDetailGet.request
 };
 
 function* onPostWriteSaga(action: ReturnType<typeof onPostWrite.request>) {
-  const { title, contents, category, failureCB, successCB } = action.payload;
+  const { title, contents, category,thumnailAddress , failureCB, successCB } = action.payload;
 
   const { status } = yield call(postRepo.postWriteReq, {
     title,
     contents,
     category,
+    thumnailAddress
   });
 
   if (status === 400) {

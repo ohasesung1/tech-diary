@@ -69,7 +69,7 @@ const ResumeWrap = styled.div`
   align-items: center;
 `;
 
-const NavList = styled.ul`
+const NavList = styled.div`
   label: nav_list;
   width: 100%;
   padding-top: 3rem;
@@ -146,7 +146,7 @@ function NavBar() {
         <NavList>
           <NavItem href="/">Project</NavItem>
           <NavItem href="/blog">Blog</NavItem>
-          <NavItem href="https://github.com/ohasesung1">Github</NavItem>
+          <NavItem href="https://github.com/ohasesung1" externalLink={true}>Github</NavItem>
           <NavItem href="/activity">Activity</NavItem>
           <NavItem href="/certificate">Certificate</NavItem>
         </NavList>

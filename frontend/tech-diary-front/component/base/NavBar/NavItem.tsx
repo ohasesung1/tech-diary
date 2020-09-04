@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { mediaQuery } from 'component/layout/responsive';
 
-const LinkWrap = styled.li<{ active: boolean }>`
+const LinkWrap = styled.a<{ active: boolean }>`
   label: link;
   font-size: 0.9rem;
   user-select: none;
@@ -54,10 +54,11 @@ const LinkWrap = styled.li<{ active: boolean }>`
 
 type Props = {
   href: string;
+  externalLink?: boolean;
   children: ReactNode|string;
 };
 
-function NavItem({ href, children }: Props) {
+function NavItem({ href, children, externalLink }: Props) {
   const router = useRouter();
 
   const pathNameArray = router.pathname.split('/');
@@ -69,9 +70,15 @@ function NavItem({ href, children }: Props) {
   const active = (router.pathname === href) || `/${pathNameArray[1]}` === href;
 
   return (
-    <Link href={href}>
-      <LinkWrap active={active}>{children}</LinkWrap>
-    </Link>
+    <>
+    {
+      !externalLink ?
+      <Link href={href} >
+        <LinkWrap active={active}>{children}</LinkWrap>
+      </Link>
+    : <LinkWrap href={href} active={active} target={'_blank'}>{children}</LinkWrap>
+    }
+    </>
   );
 }
 
