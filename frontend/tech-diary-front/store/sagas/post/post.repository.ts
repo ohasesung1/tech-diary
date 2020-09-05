@@ -36,7 +36,7 @@ class PostRepository {
     const token = getStorage('diary-token');
 
     return axios.put(`${server.host}/post/`, {
-      idx: req.idx,
+      id: req.id,
       title: req.title,
       contents: req.contents,
       thumnailAddress: req.thumnailAddress,

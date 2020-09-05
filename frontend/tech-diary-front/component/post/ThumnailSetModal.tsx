@@ -54,12 +54,12 @@ const UploadThumnailButtonLabel = styled.label`
 `;
 
 type Props = {
-  onPostWrite?: () => void;
+  onPostFunction?: () => void;
   dispatchForForm?: any;
 }
 
 
-function ThumnailSetModal({ dispatchForForm, onPostWrite }: Props) {
+function ThumnailSetModal({ dispatchForForm, onPostFunction }: Props) {
   const dispatch = useDispatch();
   const { thumnail } = useSelector((state: RootState) => state.upload);
 
@@ -87,11 +87,6 @@ function ThumnailSetModal({ dispatchForForm, onPostWrite }: Props) {
         name: 'thumnailAddress',
         value: thumnail,
       });
-    } else {
-      dispatchForForm({
-        name: 'thumnailAddress',
-        value: 'http://localhost:8000/static/img/thumnail_default.png',
-      });
     }
   }, [thumnail]);
 
@@ -108,7 +103,7 @@ function ThumnailSetModal({ dispatchForForm, onPostWrite }: Props) {
           accept={'image/gif, image/jpeg, image/jpg, image/png'}
           onChange={onUploadThumnailFile}
         />
-        <Button type={'primary'} size={'small'} margin={'0rem 1rem'} onClick={onPostWrite}>출간하기</Button>
+        <Button type={'primary'} size={'small'} margin={'0rem 1rem'} onClick={onPostFunction}>출간하기</Button>
       </BottomWrap>
     </Container>
   );

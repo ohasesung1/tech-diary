@@ -56,7 +56,7 @@ function PostWriteBottom({ onPostFunction, dispatchForForm }: Props) {
         <PostWriteUploadImg/>
         <Modal content={<ThumnailSetModal 
           dispatchForForm={dispatchForForm}
-          onPostWrite={onPostFunction}/>}>
+          onPostFunction={onPostFunction}/>}>
           <Button type={'primary'}>썸네일</Button>
         </Modal>
       </WriteButtonWrap>

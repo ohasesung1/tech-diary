@@ -25,7 +25,7 @@ export const writePostValidate = (body: Object) => {
 // 게시글 수정 요청 값 검사 함수
 export const updatePostValidate = (body: Object) => {
   const schema = Joi.object().keys({
-    idx: Joi.number().integer().required(),
+    id: Joi.string().required(),
     title: Joi.string().max(50).required(),
     contents: Joi.string().required(),
     thumnailAddress: Joi.string().allow(null),

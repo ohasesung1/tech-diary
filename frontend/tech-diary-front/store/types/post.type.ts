@@ -40,7 +40,7 @@ export type PostWriteReq = {
 }
 
 export type PostUpdateReq = {
-  idx: number;
+  id: string;
   thumnailAddress: string;
   title: string;
   contents: string;

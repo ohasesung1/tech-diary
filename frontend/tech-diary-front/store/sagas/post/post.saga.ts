@@ -89,10 +89,10 @@ function* onPostWriteSaga(action: ReturnType<typeof onPostWrite.request>) {
 }
 
 function* onPostUpdateSaga(action: ReturnType<typeof onPostUpdate.request>) {
-  const { idx, title, contents,thumnailAddress , failureCB, successCB } = action.payload;
+  const { id, title, contents,thumnailAddress , failureCB, successCB } = action.payload;
 
   const { status } = yield call(postRepo.postUpdateReq, {
-    idx,
+    id,
     title,
     contents,
     thumnailAddress

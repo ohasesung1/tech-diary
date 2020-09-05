@@ -8,6 +8,7 @@ import Button from './Button';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/modules';
 import { getStorage } from 'libs/storage';
+import Link from 'next/link';
 
 const SinglePostTemplate = styled.div`
   label: template;
@@ -93,6 +94,11 @@ const Date = styled.div`
   padding-left: 2rem;
 `;
 
+const controlButtonStyle = {
+  color: '#adb5bd',
+  cursor: 'pointer',
+};
+
 
 type Props = {
   data: Post;
@@ -131,10 +137,14 @@ function SinglePost({ data, postId }: Props) {
         <Date>{dateFormat}</Date>
         {
           isToken ? 
-          <ControlButtonWrap>
-            <Button size={'small'}>삭제 하기</Button>
-            <Button size={'small'}>수정 하기</Button>
-          </ControlButtonWrap>
+          <>
+            <ControlButtonWrap>
+              <span style={controlButtonStyle}>삭제 하기</span>
+              <Link href={`/post-update/${postId}`}>
+                <a style={controlButtonStyle}>수정 하기</a>
+              </Link>
+            </ControlButtonWrap>
+          </>
           : <></>
         }
 
