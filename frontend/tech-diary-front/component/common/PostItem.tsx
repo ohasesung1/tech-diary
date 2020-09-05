@@ -39,6 +39,7 @@ const Thumnail = styled.img`
   justify-content: center;
   border-radius: 5px 5px 0 0;
   transition: 0.5s ease-in-out;
+  object-fit: cover;
 
   &:hover {
     transform: scale(1.2);
@@ -138,7 +139,7 @@ function PostItem({ data, page }: Props) {
       </HeadWrap>
 
       <ContentWrap>
-        <MarkdownRender markdown={contents}/>
+        <MarkdownRender markdown={contents.substring(0, 100)}/>
       </ContentWrap>
 
       <BottomWrap>

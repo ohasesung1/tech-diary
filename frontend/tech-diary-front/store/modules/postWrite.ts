@@ -6,11 +6,13 @@ import { AxiosError } from "axios";
 type PostWriteState = {
   loading?: boolean;
   authLoginErrorMsg: string;
+  stateType: string;
 };
 
 const initialState: PostWriteState = {
   loading: false,
   authLoginErrorMsg: '',
+  stateType: '',
 };
 
 const POST_WRITE_ERROR_MSG = 'post/POST_WRITE_ERROR_MSG';
@@ -37,11 +39,13 @@ export default createReducer<PostWriteState, PostWriteAction>(initialState, {
   [POST_WRITE_REQUEST]: (state) => ({
     ...state,
     loading: true,
+    stateType: 'request',
   }),
 
   [POST_WRITE_SUCCESS]: (state) => ({
     ...state,
     loading: false,
+    stateType: 'success',
   }),
 
   [POST_WRITE_FAILURE]: (state) => ({

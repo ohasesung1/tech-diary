@@ -9,6 +9,7 @@ import MarkdownRender from 'component/common/MarkdownRender';
 import { useDispatch, useSelector } from 'react-redux';
 import { POST_WRITE_REQUEST } from 'store/modules/postWrite';
 import { RootState } from 'store/modules';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
   label: post_write_container;
@@ -48,12 +49,15 @@ type Props = {
 
 function PostWriter({ category }: Props) {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const [form, onChange, dispatchForForm] = useForm<CreatePostForm>({
     title: '',
     contents: '',
     thumnailAddress: 'http://localhost:8000/static/img/thumnail_default.png',
   });
   const { imgs } = useSelector((state: RootState) => state.upload);
+  const { stateType } = useSelector((state: RootState) => state.postWrite);
 
   const onPostWrite = useCallback(() => {
     const { title, contents, thumnailAddress } = form;
@@ -82,7 +86,7 @@ function PostWriter({ category }: Props) {
   useEffect(() => {
     if (imgs.length) {
 
-      const imageAddress = `![](${imgs})`;
+      const imageAddress = `\n![](${imgs})`;
 
       dispatchForForm({
         name: 'contents',
@@ -90,6 +94,12 @@ function PostWriter({ category }: Props) {
       });
     }
   }, [imgs]);
+
+  useEffect(() => {
+    if (stateType && stateType === 'success') {
+      router.back();
+    }
+  }, [stateType, router]);
 
 
   return (

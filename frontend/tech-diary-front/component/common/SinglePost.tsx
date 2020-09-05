@@ -61,6 +61,7 @@ const PostInfoWrap = styled.div`
   label: post_info_wrap;
   display: column;
   min-height: 6rem;
+  margin: 1rem 0;
 `;
 
 const Title = styled.div`
