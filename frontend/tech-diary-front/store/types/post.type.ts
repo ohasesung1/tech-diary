@@ -38,3 +38,13 @@ export type PostWriteReq = {
   successCB?: () => void;
   failureCB?: () => void;
 }
+
+export type PostUpdateReq = {
+  idx: number;
+  thumnailAddress: string;
+  title: string;
+  contents: string;
+
+  successCB?: () => void;
+  failureCB?: () => void;
+}

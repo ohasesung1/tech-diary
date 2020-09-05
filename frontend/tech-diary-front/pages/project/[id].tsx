@@ -21,7 +21,10 @@ function PostSinglePage() {
         <title>{env.appName}</title>
       </Head>
       <MainTemplate>
-        <SinglePost data={postData}/>
+        <SinglePost 
+          data={postData}
+          postId={postId}
+        />
       </MainTemplate>
     </>
   );

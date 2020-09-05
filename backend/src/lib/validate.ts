@@ -27,7 +27,8 @@ export const updatePostValidate = (body: Object) => {
   const schema = Joi.object().keys({
     idx: Joi.number().integer().required(),
     title: Joi.string().max(50).required(),
-    contents: Joi.string().max(3000).required(),
+    contents: Joi.string().required(),
+    thumnailAddress: Joi.string().allow(null),
   });
 
   return schema.validateAsync(body);

@@ -56,6 +56,7 @@ function PostWriter({ category }: Props) {
     contents: '',
     thumnailAddress: 'http://localhost:8000/static/img/thumnail_default.png',
   });
+
   const { imgs } = useSelector((state: RootState) => state.upload);
   const { stateType } = useSelector((state: RootState) => state.postWrite);
 
@@ -111,14 +112,13 @@ function PostWriter({ category }: Props) {
             onChange={onChange}
             name={"title"}
             />
-          {/* <PostWriterToolBox/> */}
           <PostWriteTextArea
             value={form.contents}
             onChange={onChange}
             name={"contents"}
           />
           <PostWriteBottom 
-            onPostWrite={onPostWrite}
+            onPostFunction={onPostWrite}
             dispatchForForm={dispatchForForm}/>
         </FormContainer>
       </HalfPageTemplate>

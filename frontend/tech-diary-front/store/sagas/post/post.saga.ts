@@ -3,6 +3,7 @@ import postRepo from './post.repository';
 import { fetchPostGet, setPostGetErrorMsg, POST_GET_REQUEST } from 'store/modules/post';
 import { POST_GET_DETAIL_REQUEST, fetchPostDetailGet } from 'store/modules/postDetail';
 import { onPostWrite, setPostWriteErrorMsg, POST_WRITE_REQUEST } from 'store/modules/postWrite';
+import { onPostUpdate, setPostUpdateErrorMsg, POST_UPDATE_REQUEST } from 'store/modules/postUpdate';
 
 function* executeCallback(cb?: () => void) {
   if (!!cb) {
@@ -87,8 +88,34 @@ function* onPostWriteSaga(action: ReturnType<typeof onPostWrite.request>) {
   yield executeCallback(successCB);
 }
 
+function* onPostUpdateSaga(action: ReturnType<typeof onPostUpdate.request>) {
+  const { idx, title, contents,thumnailAddress , failureCB, successCB } = action.payload;
+
+  const { status } = yield call(postRepo.postUpdateReq, {
+    idx,
+    title,
+    contents,
+    thumnailAddress
+  });
+
+  if (status === 400) {
+    yield executeCallback(failureCB);
+    yield put(setPostUpdateErrorMsg('양식을 맞춰주세요.'));
+    return;
+  }
+
+  if (status === 500) {
+    yield executeCallback(failureCB);
+    yield put(setPostUpdateErrorMsg('Server Error!'));
+    return;
+  }
+
+  yield put(onPostUpdate.success());
+  yield executeCallback(successCB);
+}
+
 export default function* postSagas() {
-  yield all([fork(watchGetPosts), fork(watchGetPostDetail), fork(watchOnPostWrite)]);
+  yield all([fork(watchGetPosts), fork(watchGetPostDetail), fork(watchOnPostWrite), fork(watchOnPostUpdate)]);
 };
 
 function* watchGetPosts() {
@@ -101,4 +128,8 @@ function* watchGetPostDetail() {
 
 function* watchOnPostWrite() {
   yield takeLatest(POST_WRITE_REQUEST, onPostWriteSaga);
+}
+
+function* watchOnPostUpdate() {
+  yield takeLatest(POST_UPDATE_REQUEST, onPostUpdateSaga);
 }

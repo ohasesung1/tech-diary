@@ -1,5 +1,5 @@
 import React from 'react';
-import PostWriterLayout from 'container/post/PostWriterLayout';
+import PostWriterLayout from 'container/postWrite/PostWriterLayout';
 import { useRouter } from 'next/router';
 
 function BlogPostWritePage() {
