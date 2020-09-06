@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import PostWriteUploadImg from './PostWriteUploadImg';
 import Button from 'component/common/Button';
@@ -56,12 +56,15 @@ const UploadThumnailButtonLabel = styled.label`
 type Props = {
   onPostFunction?: () => void;
   dispatchForForm?: any;
+  thumnailAddress?: string;
 }
 
 
-function ThumnailSetModal({ dispatchForForm, onPostFunction }: Props) {
+function ThumnailSetModal({ dispatchForForm, onPostFunction, thumnailAddress }: Props) {
   const dispatch = useDispatch();
   const { thumnail } = useSelector((state: RootState) => state.upload);
+
+  const [thumnailSrc, setThumnailSrc] = useState(thumnailAddress);
 
   const onUploadThumnailFile = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
@@ -82,17 +85,28 @@ function ThumnailSetModal({ dispatchForForm, onPostFunction }: Props) {
   }, [dispatch]);
 
   useEffect(() => {
-    if (thumnail) {
       dispatchForForm({
         name: 'thumnailAddress',
         value: thumnail,
       });
-    }
+      if (thumnail) {
+        setThumnailSrc(thumnail);
+      }
   }, [thumnail]);
+
+  useEffect(() => {
+    if (thumnailAddress) {
+      console.log(thumnailAddress);
+      
+      setThumnailSrc(thumnailAddress);
+    } else {
+      setThumnailSrc('http://localhost:8000/static/img/thumnail_default.png');
+    }
+  }, []);
 
   return (
     <Container>
-      <ThumnailImage src={thumnail}/>
+      <ThumnailImage src={thumnailSrc}/>
       <BottomWrap>
         <UploadThumnailButtonLabel
           htmlFor={'thumnail_upload'}>썸네일 업로드

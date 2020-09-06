@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { env } from 'libs/config/env';
-import { PostGet, PostWriteReq, PostUpdateReq } from 'store/types/post.type';
+import { PostGet, PostWriteReq, PostUpdateReq, PostDeleteReq } from 'store/types/post.type';
 import { getStorage } from 'libs/storage';
 
 const { server } = env;
@@ -41,6 +41,17 @@ class PostRepository {
       contents: req.contents,
       thumnailAddress: req.thumnailAddress,
     }, {
+      headers: {
+        token: token,
+      }
+    })
+    .catch((error) => error.response);
+  }
+
+  public async postDeleteReq(req: PostDeleteReq) {
+    const token = getStorage('diary-token');
+
+    return axios.delete(`${server.host}/post/?id=${req.id}`, {
       headers: {
         token: token,
       }

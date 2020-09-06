@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
 import styled from '@emotion/styled';
 import MarkdownRender from './MarkdownRender';
 import { Post } from 'store/types/post.type';
 import { mediaQuery } from 'component/layout/responsive';
 import Button from './Button';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/modules';
 import { getStorage } from 'libs/storage';
 import Link from 'next/link';
+import { POST_DELETE_REQUEST } from 'store/modules/postDelete';
+import { useRouter } from 'next/router';
 
 const SinglePostTemplate = styled.div`
   label: template;
@@ -106,8 +108,12 @@ type Props = {
 }
 
 function SinglePost({ data, postId }: Props) {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  
   const [isToken, setIsToken] = useState(false);
   const { isLoginSuccess } = useSelector((state: RootState) => state.auth);
+  const { stateType } = useSelector((state: RootState) => state.postDelete)
 
   const {
     contents,
@@ -118,6 +124,15 @@ function SinglePost({ data, postId }: Props) {
 
   const dateFormat = moment(createTime).format('YYYY년 MM월 DD일');
 
+  const onDeletePost = useCallback(() => {
+    dispatch({
+      type: POST_DELETE_REQUEST,
+      payload: {
+        id: postId,
+      }
+    })
+  }, [dispatch]);
+
   useEffect(() => {
     const token = getStorage('diary-token');
 
@@ -127,6 +142,13 @@ function SinglePost({ data, postId }: Props) {
       setIsToken(false);
     }
   }, [isToken, isLoginSuccess]);
+
+
+  useEffect(() => {
+    if (stateType === 'success') {
+      router.back();
+    }
+  }, [stateType, router]);
 
   return (
     <SinglePostTemplate>
@@ -139,7 +161,7 @@ function SinglePost({ data, postId }: Props) {
           isToken ? 
           <>
             <ControlButtonWrap>
-              <span style={controlButtonStyle}>삭제 하기</span>
+              <span style={controlButtonStyle} onClick={() => onDeletePost()}>삭제 하기</span>
               <Link href={`/post-update/${postId}`}>
                 <a style={controlButtonStyle}>수정 하기</a>
               </Link>

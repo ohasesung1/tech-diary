@@ -4,6 +4,7 @@ import { fetchPostGet, setPostGetErrorMsg, POST_GET_REQUEST } from 'store/module
 import { POST_GET_DETAIL_REQUEST, fetchPostDetailGet } from 'store/modules/postDetail';
 import { onPostWrite, setPostWriteErrorMsg, POST_WRITE_REQUEST } from 'store/modules/postWrite';
 import { onPostUpdate, setPostUpdateErrorMsg, POST_UPDATE_REQUEST } from 'store/modules/postUpdate';
+import { postDelete, setPostDeleteErrorMsg, POST_DELETE_REQUEST } from 'store/modules/postDelete';
 
 function* executeCallback(cb?: () => void) {
   if (!!cb) {
@@ -114,8 +115,32 @@ function* onPostUpdateSaga(action: ReturnType<typeof onPostUpdate.request>) {
   yield executeCallback(successCB);
 }
 
+function* deletePostSaga(action: ReturnType<typeof postDelete.request>) {
+  const { id , failureCB, successCB } = action.payload;
+
+  const { status } = yield call(postRepo.postDeleteReq, {
+    id,
+  });
+
+  if (status === 400) {
+    yield executeCallback(failureCB);
+    yield put(setPostDeleteErrorMsg('양식을 맞춰주세요.'));
+    return;
+  }
+
+  if (status === 500) {
+    yield executeCallback(failureCB);
+    yield put(setPostDeleteErrorMsg('Server Error!'));
+    return;
+  }
+
+
+  yield put(postDelete.success());
+  yield executeCallback(successCB);
+}
+
 export default function* postSagas() {
-  yield all([fork(watchGetPosts), fork(watchGetPostDetail), fork(watchOnPostWrite), fork(watchOnPostUpdate)]);
+  yield all([fork(watchGetPosts), fork(watchGetPostDetail), fork(watchOnPostWrite), fork(watchOnPostUpdate), fork(watchOnPostDelete)]);
 };
 
 function* watchGetPosts() {
@@ -132,4 +157,8 @@ function* watchOnPostWrite() {
 
 function* watchOnPostUpdate() {
   yield takeLatest(POST_UPDATE_REQUEST, onPostUpdateSaga);
+}
+
+function* watchOnPostDelete() {
+  yield takeLatest(POST_DELETE_REQUEST, deletePostSaga);
 }

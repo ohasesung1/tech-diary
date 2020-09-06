@@ -58,7 +58,7 @@ function PostWriter({ category }: Props) {
   });
 
   const { imgs } = useSelector((state: RootState) => state.upload);
-  const { stateType } = useSelector((state: RootState) => state.postWrite);
+  const { loading } = useSelector((state: RootState) => state.postWrite);
 
   const onPostWrite = useCallback(() => {
     const { title, contents, thumnailAddress } = form;
@@ -97,10 +97,10 @@ function PostWriter({ category }: Props) {
   }, [imgs]);
 
   useEffect(() => {
-    if (stateType && stateType === 'success') {
+    if (loading) {
       router.back();
     }
-  }, [stateType, router]);
+  }, [loading, router]);
 
 
   return (

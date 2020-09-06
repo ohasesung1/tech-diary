@@ -32,10 +32,11 @@ const GoToBackButton = styled.div`
 type Props = {
   onPostFunction?: () => void;
   dispatchForForm?: any;
+  thumnailAddress?: string;
 }
 
 
-function PostWriteBottom({ onPostFunction, dispatchForForm }: Props) {
+function PostWriteBottom({ onPostFunction, dispatchForForm, thumnailAddress }: Props) {
   const router = useRouter();
 
   const goBackPage = useCallback(() => {
@@ -56,7 +57,8 @@ function PostWriteBottom({ onPostFunction, dispatchForForm }: Props) {
         <PostWriteUploadImg/>
         <Modal content={<ThumnailSetModal 
           dispatchForForm={dispatchForForm}
-          onPostFunction={onPostFunction}/>}>
+          onPostFunction={onPostFunction}
+          thumnailAddress={thumnailAddress}/>}>
           <Button type={'primary'}>썸네일</Button>
         </Modal>
       </WriteButtonWrap>

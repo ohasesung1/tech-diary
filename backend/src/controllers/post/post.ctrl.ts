@@ -173,13 +173,14 @@ export class PostCtrl {
 
   // 게시글 삭제 함수
   public deletePost = async (req: AuthRequest, res: Response) => {
-    let id: string = req.query.idx as string; 
+    let id: string = req.query.id as string; 
+
 
     // 게시글 id를 검사합니다. (idx의 존재 여부, 1이상의 양의 정수인지 확인)
-    if (!id || parseInt(id) < 0) {
+    if (!id) {
       res.status(400).json({
         status: 400,
-        message: 'idx를 정확히 작성해 주세요!'
+        message: 'id를 정확히 작성해 주세요!'
       });
 
       return;

@@ -48,3 +48,10 @@ export type PostUpdateReq = {
   successCB?: () => void;
   failureCB?: () => void;
 }
+
+export type PostDeleteReq = {
+  id: string;
+
+  successCB?: () => void;
+  failureCB?: () => void;
+}

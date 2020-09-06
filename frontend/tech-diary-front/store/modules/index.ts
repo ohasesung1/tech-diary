@@ -5,6 +5,7 @@ import postDetail from './postDetail';
 import upload from './upload';
 import postWrite from './postWrite';
 import postUpdate from './postUpdate';
+import postDelete from './postDelete';
 
 const rootReducer = combineReducers({
   post,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   auth,
   upload,
   postWrite,
-  postUpdate
+  postUpdate,
+  postDelete,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

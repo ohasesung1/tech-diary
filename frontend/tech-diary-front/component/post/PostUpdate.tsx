@@ -121,7 +121,8 @@ function PostUpdate({ postId, postData }: Props) {
           />
           <PostWriteBottom
             onPostFunction={onPostUpdate}
-            dispatchForForm={dispatchForForm}/>
+            dispatchForForm={dispatchForForm}
+            thumnailAddress={form.thumnailAddress}/>
         </FormContainer>
       </HalfPageTemplate>
       <HalfPageTemplate color={'#f8f9fa'}>
