@@ -152,7 +152,7 @@ function NavBar() {
           <NavItem href="/">Project</NavItem>
           <NavItem href="/blog">Blog</NavItem>
           <NavItem href="https://github.com/ohasesung1" externalLink={true}>Github</NavItem>
-          <NavItem href="https://www.notion.so/O-HAESEONG-7d34eb6436d0486fbcaffd8b5c0d8df5" externalLink={true}>Notion</NavItem>
+          <NavItem href="https://www.notion.so/O-HAESEONG-7d34eb6436d0486fbcaffd8b5c0d8df5" externalLink={true}>About Me</NavItem>
           <NavItem href="https://www.notion.so/7d27d3a8f0274630aa4d6a2d109cfd24" externalLink={true}>Activity</NavItem>
           <NavItem href="https://www.notion.so/48467a80923c48edbdd2458dc3c00117" externalLink={true}>Certificate</NavItem>
         </NavList>

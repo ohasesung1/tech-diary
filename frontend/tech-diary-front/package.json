@@ -13,6 +13,7 @@
     "@types/jest": "^26.0.10",
     "animate-css-grid": "^1.4.3",
     "axios": "^0.19.2",
+    "disqus-react": "^1.0.10",
     "form-data": "^3.0.0",
     "html-react-parser": "^0.13.0",
     "immer": "^7.0.7",
@@ -38,6 +39,7 @@
     "remark-rehype": "^7.0.0",
     "remark-slug": "^6.0.0",
     "sanitize-html": "^1.27.3",
+    "scrivito": "^1.16.1-rc2",
     "typesafe-actions": "^5.1.0"
   },
   "devDependencies": {

@@ -1,16 +1,17 @@
+// import * as Scrivito from 'scrivito';
 import React, { useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
 import styled from '@emotion/styled';
 import MarkdownRender from './MarkdownRender';
 import { Post } from 'store/types/post.type';
 import { mediaQuery } from 'component/layout/responsive';
-import Button from './Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/modules';
 import { getStorage } from 'libs/storage';
 import Link from 'next/link';
 import { POST_DELETE_REQUEST } from 'store/modules/postDelete';
 import { useRouter } from 'next/router';
+// import Disqus from 'disqus-react';
 
 const SinglePostTemplate = styled.div`
   label: template;
