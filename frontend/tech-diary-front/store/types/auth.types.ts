@@ -5,8 +5,3 @@ export type AuthLogin = {
   successCB?: () => void;
   failureCB?: () => void;
 };
-
-// export type AuthLoginSuccess = {
-//   token: string;
-//   refreshToken: string;
-// }

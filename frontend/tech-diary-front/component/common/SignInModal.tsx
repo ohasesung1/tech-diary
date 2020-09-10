@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import styled from '@emotion/styled';
 import useForm from 'libs/hooks/useForm';
+import sha512 from 'js-sha512';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTH_LOGIN_REQUEST } from 'store/modules/auth';
 import { RootState } from 'store/modules';
@@ -82,6 +83,9 @@ function SignInModal() {
 
   const onSignIn = useCallback(() => {
     const { id, pw } = form;
+    const encryptionPw = sha512.sha512(pw);
+
+    console.log(encryptionPw, 'test');
 
     const errorMsg = validate.id(id) 
     || validate.pw(pw)
@@ -96,7 +100,7 @@ function SignInModal() {
       type: AUTH_LOGIN_REQUEST,
       payload: {
         memberId: id,
-        pw,
+        pw: encryptionPw,
       },
     });
 

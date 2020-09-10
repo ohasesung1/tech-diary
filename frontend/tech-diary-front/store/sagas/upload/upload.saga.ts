@@ -1,4 +1,4 @@
-import { all, call, takeLatest, put, throttle, fork } from 'redux-saga/effects';
+import { all, call, takeLatest, put, fork } from 'redux-saga/effects';
 import uploadRepo from './upload.repository';
 import { uploadFile, UPLOAD_FILE_REQUEST, setUploadFileErrorMsg, uploadThumnail, UPLOAD_THUMNAIL_REQUEST } from "store/modules/upload";
 

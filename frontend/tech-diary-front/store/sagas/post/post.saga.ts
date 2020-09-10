@@ -1,4 +1,4 @@
-import { all, call, takeLatest, put, throttle, fork } from 'redux-saga/effects';
+import { all, call, takeLatest, put, fork } from 'redux-saga/effects';
 import postRepo from './post.repository';
 import { fetchPostGet, setPostGetErrorMsg, POST_GET_REQUEST } from 'store/modules/post';
 import { POST_GET_DETAIL_REQUEST, fetchPostDetailGet } from 'store/modules/postDetail';

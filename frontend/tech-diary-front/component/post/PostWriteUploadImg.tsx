@@ -1,4 +1,4 @@
-import React, { useCallback, useState, ChangeEvent } from 'react';
+import React, { useCallback } from 'react';
 import styled from '@emotion/styled';
 import { useDispatch } from 'react-redux';
 import { UPLOAD_FILE_REQUEST } from 'store/modules/upload';

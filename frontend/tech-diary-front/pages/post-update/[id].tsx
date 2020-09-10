@@ -1,5 +1,4 @@
 import React from 'react';
-import PostWriterLayout from 'container/postWrite/PostWriterLayout';
 import { useRouter } from 'next/router';
 import PostUpdate from 'component/post/PostUpdate';
 import usePostDetail from 'component/base/hooks/usePostDetail';

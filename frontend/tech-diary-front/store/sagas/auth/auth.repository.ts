@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { AuthLogin } from 'store/types/auth.types';
 import axios from 'axios';
 import { env } from 'libs/config/env';

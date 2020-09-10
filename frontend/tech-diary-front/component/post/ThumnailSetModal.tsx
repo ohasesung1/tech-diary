@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import PostWriteUploadImg from './PostWriteUploadImg';
 import Button from 'component/common/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { UPLOAD_THUMNAIL_REQUEST } from 'store/modules/upload';
@@ -100,7 +99,7 @@ function ThumnailSetModal({ dispatchForForm, onPostFunction, thumnailAddress }: 
       
       setThumnailSrc(thumnailAddress);
     } else {
-      setThumnailSrc('http://localhost:8000/static/img/thumnail_default.png');
+      setThumnailSrc('https://happy-ohaeseong.com:8888/static/img/thumnail_default.png');
     }
   }, []);
 

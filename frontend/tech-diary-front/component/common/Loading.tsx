@@ -25,7 +25,7 @@ const LoadingImage = styled.img`
 function Loading() {
   return (
     <LoadingWrap>
-      <LoadingImage src={'/files/loading.gif'}/>
+      <LoadingImage src={'https://happy-ohaeseong.com/files/loading.gif'}/>
     </LoadingWrap>
   );
 }

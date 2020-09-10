@@ -1,5 +1,4 @@
-const host = process.env.NODE_ENV === 'production' ?
-  process.env.SERVER_HOST : 'http://localhost:8000/api';
+const host = 'https://happy-ohaeseong.com:8888/api';
 
   
 const imgHost = process.env.NODE_ENV === 'production' ?
