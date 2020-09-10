@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "tsc nodemon dist",
+    "start": "nodemon --watch src --delay 1 --exec ts-node ./src/app.ts",
     "dev": "cross-env NODE_ENV=development nodemon -e ts --exec ts-node ./src/app.ts"
   },
   "dependencies": {

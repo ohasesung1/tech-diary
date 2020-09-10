@@ -115,7 +115,7 @@ export class PostCtrl {
       const id: string = await generatedId();
 
       if (!thumnailAddress) {
-        thumnailAddress = `http://${replace}/static/img/thumnail_default.png`;
+        thumnailAddress = `https://${replace}/static/img/thumnail_default.png`;
       }
       
 

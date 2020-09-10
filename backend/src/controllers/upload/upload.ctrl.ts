@@ -28,7 +28,7 @@ export class UploadCtrl {
 
       // 파일 값을 토대로 이미지 주소 생성
       for (const[_, file] of Object.entries(files)) {
-        const fileAddress = `http://${replace}/static/img/${file.filename}`;
+        const fileAddress = `https://${replace}/static/img/${file.filename}`;
 
         imgs.push({ fileAddress });
       }
