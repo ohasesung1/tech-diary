@@ -5,7 +5,7 @@ import { Post } from 'store/types/post.type';
 import Link from 'next/link';
 import moment from 'moment';
 import MarkdownRender from './MarkdownRender';
-// container
+// container commnet
 const Container = styled.div`
   label: post-item;
   display: flex;
