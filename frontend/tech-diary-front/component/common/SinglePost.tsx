@@ -10,12 +10,13 @@ import { getStorage } from 'libs/storage';
 import Link from 'next/link';
 import { POST_DELETE_REQUEST } from 'store/modules/postDelete';
 import { useRouter } from 'next/router';
+import { DiscussionEmbed } from 'disqus-react';
 
 const SinglePostTemplate = styled.div`
   label: template;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 100rem;
   background-color: white;
 
   ${mediaQuery.xl} {
@@ -95,10 +96,15 @@ const Date = styled.div`
   padding-left: 2rem;
 `;
 
+const DiscussWrap = styled.div`
+  padding: 2rem;
+`;
+
 const controlButtonStyle = {
   color: '#adb5bd',
   cursor: 'pointer',
 };
+
 
 
 type Props = {
@@ -112,16 +118,25 @@ function SinglePost({ data, postId }: Props) {
   
   const [isToken, setIsToken] = useState(false);
   const { isLoginSuccess } = useSelector((state: RootState) => state.auth);
-  const { stateType } = useSelector((state: RootState) => state.postDelete)
+  const { stateType } = useSelector((state: RootState) => state.postDelete);
+
+  const disqusShortname = "Tech-diary"
 
   const {
+    id,
     contents,
     title,
     thumbnail_address,
-    createTime
+    create_time
   } = data;
 
-  const dateFormat = moment(createTime).format('YYYY년 MM월 DD일');
+  const disqusConfig = {
+    url: `https://www.happy-ohaeseong.com/${postId}`,
+    identifier: postId,
+    title: "Tech-diary"
+  };
+
+  const dateFormat = moment(create_time).format('YYYY년 MM월 DD일');
 
   const onDeletePost = useCallback(() => {
     dispatch({
@@ -176,6 +191,13 @@ function SinglePost({ data, postId }: Props) {
           <MarkdownRender markdown={contents} fontSize={'1.1rem'}/>
         </Content>
       </ContentWrap>
+      <DiscussWrap>
+        <DiscussionEmbed 
+          shortname={disqusShortname}
+          config = {disqusConfig}
+        />
+      </DiscussWrap>
+
     </SinglePostTemplate>
   );
 }

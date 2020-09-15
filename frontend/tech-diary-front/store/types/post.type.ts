@@ -5,7 +5,7 @@ export type Post = {
   contents: string;
   thumbnail_address?: string;
   series?: string;
-  createTime: string;
+  create_time: string;
 };
 
 export type PostListResponse = {

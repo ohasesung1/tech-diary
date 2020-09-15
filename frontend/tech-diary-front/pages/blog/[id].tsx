@@ -12,7 +12,6 @@ function PostSinglePage() {
   const postId = router.query.id as string;
 
   const { loading, postData } = usePostDetail(postId);
-  
 
   if (loading || !postData) return (<Loading/>);
 

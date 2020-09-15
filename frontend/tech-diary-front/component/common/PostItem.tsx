@@ -115,10 +115,10 @@ function PostItem({ data, page }: Props) {
     title,
     contents,
     thumbnail_address,
-    createTime
+    create_time
   } = data;
 
-  const dateFormat = moment(createTime).format('YYYY년 MM월 DD일');
+  const dateFormat = moment(create_time).format('YYYY년 MM월 DD일');
   
   return (
     <Container>

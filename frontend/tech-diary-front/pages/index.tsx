@@ -12,6 +12,7 @@ function IndexPage() {
    <>
     <Head>
       <title>{env.appName}</title>
+      <link rel="favicon" href="/favicon.png" />
     </Head>
     <MainTemplate>
       <ProjectLayout/>
