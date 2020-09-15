@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { css } from "@emotion/core";
 import { Post } from 'store/types/post.type';
 import Link from 'next/link';
-import moment from 'moment';
+import moment from 'moment'; 
 import MarkdownRender from './MarkdownRender';
 // container commnet wow
 const Container = styled.div`
