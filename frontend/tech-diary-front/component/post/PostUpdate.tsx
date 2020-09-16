@@ -76,6 +76,9 @@ function PostUpdate({ postId, postData }: Props) {
     return;
   }
 
+  console.log(thumnailAddress);
+  
+
   dispatch({
     type: POST_UPDATE_REQUEST,
     payload: {

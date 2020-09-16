@@ -123,7 +123,6 @@ function SinglePost({ data, postId }: Props) {
   const disqusShortname = "Tech-diary"
 
   const {
-    id,
     contents,
     title,
     thumbnail_address,

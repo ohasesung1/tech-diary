@@ -138,11 +138,14 @@ export class PostCtrl {
   // 게시글 수정 함수
   public updatePost = async (req: AuthRequest, res: Response) => {
     const { body } = req;
-
+    console.log(body);
+    
     // validate 라이브러리를 사용해 요청 form을 검사합니다.
     try {
       await Validate.updatePostValidate(body);
     } catch (error) {
+      console.log(error);
+      
       res.status(400).json({
         status: 400,
         message: '양식이 맞지 않아요!'
