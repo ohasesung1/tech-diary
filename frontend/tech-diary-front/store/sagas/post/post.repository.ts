@@ -39,7 +39,7 @@ class PostRepository {
       id: req.id,
       title: req.title,
       contents: req.contents,
-      thumnailAddress: req.thumnailAddress,
+      thumbnailAddress: req.thumbnailAddress,
     }, {
       headers: {
         token: token,

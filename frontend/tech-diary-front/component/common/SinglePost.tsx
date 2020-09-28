@@ -120,7 +120,7 @@ function SinglePost({ data, postId }: Props) {
   const { isLoginSuccess } = useSelector((state: RootState) => state.auth);
   const { stateType } = useSelector((state: RootState) => state.postDelete);
 
-  const disqusShortname = "Tech-diary"
+  const disqusShortname = "Tech-diary";
 
   const {
     contents,
@@ -193,7 +193,7 @@ function SinglePost({ data, postId }: Props) {
       <DiscussWrap>
         <DiscussionEmbed 
           shortname={disqusShortname}
-          config = {disqusConfig}
+          config={disqusConfig}
         />
       </DiscussWrap>
 

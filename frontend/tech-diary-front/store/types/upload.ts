@@ -10,5 +10,5 @@ export type UploadFileSuccess = {
 };
 
 export type UploadThumnailSuccess = {
-  thumnail: string;
+  thumbnail: string;
 };

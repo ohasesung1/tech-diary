@@ -6,13 +6,13 @@ type UploadFileState = {
   loading?: boolean;
   uploadFileErrorMsg: string;
   imgs: Array<string>;
-  thumnail: string;
+  thumbnail: string;
 };
 
 const initialState: UploadFileState = {
   loading: false,
   uploadFileErrorMsg: '',
-  thumnail: '',
+  thumbnail: '',
   imgs: [],
 };
 
@@ -77,7 +77,7 @@ export default createReducer<UploadFileState, UploadFileAction>(initialState, {
   [UPLOAD_THUMNAIL_SUCCESS]: (state, action) => ({ 
     ...state,
     loading: false,
-    thumnail: action.payload.thumnail,
+    thumbnail: action.payload.thumbnail,
   }),
 
   [UPLOAD_THUMNAIL_FAILURE]: (state) => ({ 

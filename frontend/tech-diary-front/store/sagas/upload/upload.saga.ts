@@ -58,7 +58,7 @@ function* uploadThumnailSaga(action:ReturnType<typeof uploadThumnail.request>) {
   }
 
   const payload = {
-    thumnail: data.data.imgs[0].fileAddress,
+    thumbnail: data.data.imgs[0].fileAddress,
   }
 
   yield put(uploadThumnail.success(payload));

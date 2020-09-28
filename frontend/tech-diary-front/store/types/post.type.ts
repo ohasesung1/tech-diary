@@ -41,7 +41,7 @@ export type PostWriteReq = {
 
 export type PostUpdateReq = {
   id: string;
-  thumnailAddress: string;
+  thumbnailAddress: string;
   title: string;
   contents: string;
 

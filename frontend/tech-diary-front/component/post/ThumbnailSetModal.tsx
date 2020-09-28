@@ -6,7 +6,7 @@ import { UPLOAD_THUMNAIL_REQUEST } from 'store/modules/upload';
 import { RootState } from 'store/modules';
 
 const Container  = styled.div`
-  label: thumnail_set_container;
+  label: thumbnail_set_container;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,8 +14,8 @@ const Container  = styled.div`
   padding-top: 1rem;
 `;
 
-const ThumnailImage = styled.img`
-  label: thumnail_image;
+const ThumbnailImage = styled.img`
+  label: thumbnail_image;
   max-width: 25rem;
   max-height: 15rem;
   margin-bottom: 1rem;
@@ -31,13 +31,13 @@ const BottomWrap = styled.div`
   height: 3rem;
 `;
 
-const UploadThumnail = styled.input`
+const UploadThumbnail = styled.input`
   label: upload_img_input;
   display: none;
 `;
 
-const UploadThumnailButtonLabel = styled.label`
-  label: upload_thumnail_button_label;
+const UploadThumbnailButtonLabel = styled.label`
+  label: upload_thumbnail_button_label;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,21 +55,19 @@ const UploadThumnailButtonLabel = styled.label`
 type Props = {
   onPostFunction?: () => void;
   dispatchForForm?: any;
-  thumnailAddress?: string;
+  thumbnailAddress?: string;
 }
 
 
-function ThumnailSetModal({ dispatchForForm, onPostFunction, thumnailAddress }: Props) {
+function ThumbnailSetModal({ dispatchForForm, onPostFunction, thumbnailAddress }: Props) {
   const dispatch = useDispatch();
-  const { thumnail } = useSelector((state: RootState) => state.upload);
+  const { thumbnail } = useSelector((state: RootState) => state.upload);
 
-  const [thumnailSrc, setThumnailSrc] = useState(thumnailAddress);
+  const [thumbnailSrc, setThumbnailSrc] = useState(thumbnailAddress);
 
-  const onUploadThumnailFile = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+  const onUploadThumbnailFile = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
     const imageFile = event.target.files;
-
-
     if (imageFile) {
       formData.append('image', imageFile[0]);
     }
@@ -85,36 +83,44 @@ function ThumnailSetModal({ dispatchForForm, onPostFunction, thumnailAddress }: 
 
   useEffect(() => {
       dispatchForForm({
-        name: 'thumnailAddress',
-        value: thumnail,
+        name: 'thumbnailAddress',
+        value: thumbnail,
       });
-      if (thumnail) {
-        setThumnailSrc(thumnail);
+
+      if (thumbnail === "") {
+        dispatchForForm({
+          name: 'thumbnailAddress',
+          value: thumbnailSrc,
+        });
+
+        console.log('testset', thumbnailSrc);
       }
-  }, [thumnail]);
+
+      if (thumbnail !== "") {
+        setThumbnailSrc(thumbnail);
+      }
+  }, [thumbnail, thumbnailSrc]);
 
   useEffect(() => {
-    if (thumnailAddress) {
-      console.log(thumnailAddress);
-      
-      setThumnailSrc(thumnailAddress);
+    if (thumbnailAddress) {
+      setThumbnailSrc(thumbnailAddress);
     } else {
-      setThumnailSrc('https://happy-ohaeseong.com:8888/static/img/thumnail_default.png');
+      setThumbnailSrc('https://happy-ohaeseong.com:8888/static/img/thumnail_default.png');
     }
   }, []);
 
   return (
     <Container>
-      <ThumnailImage src={thumnailSrc}/>
+      <ThumbnailImage src={thumbnailSrc}/>
       <BottomWrap>
-        <UploadThumnailButtonLabel
-          htmlFor={'thumnail_upload'}>썸네일 업로드
-        </UploadThumnailButtonLabel>
-        <UploadThumnail
-          id={'thumnail_upload'}
+        <UploadThumbnailButtonLabel
+          htmlFor={'thumbnail_upload'}>썸네일 업로드
+        </UploadThumbnailButtonLabel>
+        <UploadThumbnail
+          id={'thumbnail_upload'}
           type={'file'} 
           accept={'image/gif, image/jpeg, image/jpg, image/png'}
-          onChange={onUploadThumnailFile}
+          onChange={onUploadThumbnailFile}
         />
         <Button type={'primary'} size={'small'} margin={'0rem 1rem'} onClick={onPostFunction}>출간하기</Button>
       </BottomWrap>
@@ -122,4 +128,4 @@ function ThumnailSetModal({ dispatchForForm, onPostFunction, thumnailAddress }: 
   );
 }
 
-export default ThumnailSetModal;
+export default ThumbnailSetModal;

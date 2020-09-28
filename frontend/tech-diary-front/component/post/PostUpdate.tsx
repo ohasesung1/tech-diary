@@ -46,7 +46,7 @@ type Props = {
 type UpdatePostForm = {
   title: string,
   contents: string,
-  thumnailAddress? : string,
+  thumbnailAddress? : string,
 }
 
 function PostUpdate({ postId, postData }: Props) {
@@ -58,14 +58,14 @@ function PostUpdate({ postId, postData }: Props) {
   const [form, onChange, dispatchForForm] = useForm<UpdatePostForm>({
     title: title,
     contents: contents,
-    thumnailAddress: thumbnail_address,
+    thumbnailAddress: thumbnail_address,
   });
 
   const { imgs } = useSelector((state: RootState) => state.upload);
   const { stateType } = useSelector((state: RootState) => state.postUpdate);
 
   const onPostUpdate = useCallback(() => {
-    const { title, contents, thumnailAddress } = form;
+    const { title, contents, thumbnailAddress } = form;
 
     const errorMsg = validate.title(title) 
     || validate.contents(contents)
@@ -76,16 +76,13 @@ function PostUpdate({ postId, postData }: Props) {
     return;
   }
 
-  console.log(thumnailAddress);
-  
-
   dispatch({
     type: POST_UPDATE_REQUEST,
     payload: {
       id: postId,
       title,
       contents,
-      thumnailAddress,
+      thumbnailAddress,
     },
   });
   }, [dispatch, form]);
@@ -125,7 +122,7 @@ function PostUpdate({ postId, postData }: Props) {
           <PostWriteBottom
             onPostFunction={onPostUpdate}
             dispatchForForm={dispatchForForm}
-            thumnailAddress={form.thumnailAddress}/>
+            thumbnailAddress={form.thumbnailAddress}/>
         </FormContainer>
       </HalfPageTemplate>
       <HalfPageTemplate color={'#f8f9fa'}>

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Button from 'component/common/Button';
 import PostWriteUploadImg from './PostWriteUploadImg';
 import Modal from 'component/common/Modal';
-import ThumnailSetModal from './ThumnailSetModal';
+import ThumnailSetModal from './ThumbnailSetModal';
 import { useRouter } from 'next/router';
 
 const Container = styled.div`
@@ -32,11 +32,11 @@ const GoToBackButton = styled.div`
 type Props = {
   onPostFunction?: () => void;
   dispatchForForm?: any;
-  thumnailAddress?: string;
+  thumbnailAddress?: string;
 }
 
 
-function PostWriteBottom({ onPostFunction, dispatchForForm, thumnailAddress }: Props) {
+function PostWriteBottom({ onPostFunction, dispatchForForm, thumbnailAddress }: Props) {
   const router = useRouter();
 
   const goBackPage = useCallback(() => {
@@ -58,7 +58,7 @@ function PostWriteBottom({ onPostFunction, dispatchForForm, thumnailAddress }: P
         <Modal content={<ThumnailSetModal 
           dispatchForForm={dispatchForForm}
           onPostFunction={onPostFunction}
-          thumnailAddress={thumnailAddress}/>}>
+          thumbnailAddress={thumbnailAddress}/>}>
           <Button type={'primary'}>썸네일</Button>
         </Modal>
       </WriteButtonWrap>
